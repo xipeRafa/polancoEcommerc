@@ -7,7 +7,7 @@ import CartWidget from "../CartWidget/CartWidget";
 import './NavBar.css';
 import logo from '../../imgs/polanco/0.png'
 //Routing
-import {NavLink,Routes,  Route, Navigate} from 'react-router-dom'
+import {NavLink,Routes,Route, Navigate} from 'react-router-dom'
 
 
 const NavBar = () => {
@@ -36,9 +36,11 @@ const NavBar = () => {
                         <li>
                             <NavLink to="/my-orders" className="navlink " > PEDIDOS </NavLink>
                         </li>
-                {/*         <Routes>
-                            <Route path="*"> <Navigate to="/" /> </Route>
-                        </Routes> */}
+   {/*                      <Routes>
+                    <Route path="/" element={<ItemListContainer/>}/> */}
+                        <Routes>
+                            <Route path="*"  element={<Navigate to="/" />}/> 
+                        </Routes> 
                     </ul>
                     {/* Icono de carrito de compras */}
                     <CartWidget />
