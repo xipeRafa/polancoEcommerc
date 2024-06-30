@@ -1,0 +1,32 @@
+
+
+:root {
+  --live-orange-color: #d5b085de;
+      --text-color: #1e1c2a;
+      --bg-color:rgb(233, 231, 231) ;
+      --bg-color-m: #14141481;
+      --bg-color-l: #26262637;
+    
+      --big-font: 4rem;
+      --h2-font: 2.24rem;
+      --p-font: 0.9rem;
+    
+      --white-color:#e2d5d3;
+      --black-color:#040404;
+
+      -—light-brown-text-color:#5d4e4e; 
+      --dark-brown-text-color:#292021;
+      
+      --dark-gray-text-color:#3c3c3c;
+      --light-gray-color:#7c7c7c70;
+      -—light-gray-hover-color:#727074;
+    
+    }
+
+
+html {
+  background-color: var(--bg-color-l);
+}
+
+
+

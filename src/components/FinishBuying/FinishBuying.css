@@ -1,0 +1,42 @@
+.finish-buying {
+  padding: 5px;
+}
+
+.finish-buying .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #373F47;
+  font-weight: 600;
+  background-color: #0CCE6B;
+  width: 98%;
+  margin-left: 1%;
+  animation: appear 1.3s;
+  margin-bottom: 5px;
+}
+
+.finish-buying .btn:hover {
+  font-size: 18px;
+}
+
+.finish-buying .btn .cart {
+  margin-left: 2%;
+}
+
+@-webkit-keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

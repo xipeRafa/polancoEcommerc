@@ -1,0 +1,12 @@
+.loader-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 90vh;
+  background-color: #373F47;
+}
+
+.loader-screen .preloader-wrapper .spinner-layer {
+  border-color: #E0FF00 !important;
+}
