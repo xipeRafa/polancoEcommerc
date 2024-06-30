@@ -8,7 +8,7 @@ const FinishBuying = () => {
     return (
 
         <div className="finish-buying">
-            <Link to="/cart" 
+            <Link to="/polancoEcommerc/cart" 
                 className="waves-effect btn">
                 Ir al carrito
                 <i className="material-icons cart">shopping_cart</i>

@@ -20,11 +20,11 @@ const CartWidget = () => {
                 {
                     items > 0 
                     && 
-                        <Link to="/cart" className="total-items">
+                        <Link to="/polancoEcommerc/cart" className="total-items">
                             <p>{items}</p>
                         </Link>
                 }
-                <Link to="/cart" > <i className="material-icons">shopping_cart</i> </Link>
+                <Link to="/polancoEcommerc/cart" > <i className="material-icons">shopping_cart</i> </Link>
             </div>
         </>
     )

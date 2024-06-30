@@ -7,7 +7,7 @@ import CartWidget from "../CartWidget/CartWidget";
 import './NavBar.css';
 import logo from '../../imgs/polanco/0.png'
 //Routing
-import {NavLink,Routes,Route, Navigate} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 
 const NavBar = () => {
@@ -17,7 +17,7 @@ const NavBar = () => {
             <nav id='nav'>
                 <div className="nav-wrapper">
                     {/* El atributo exact hace que el router busque exactamente la ruta / y no todas las q empiezen con / */}
-                    <NavLink to="/" className="brand-logo" >
+                    <NavLink to="/polancoEcommerc" className="brand-logo" >
                         <img src={logo} alt="NextGym" />
                     </NavLink>
                     <a data-target="mobile-demo" className="sidenav-trigger">
@@ -25,22 +25,17 @@ const NavBar = () => {
                     </a>
                     <ul className="right hide-on-med-and-down">
                         <li>
-                            <NavLink to="/" className="navlink inicio"> INICIO </NavLink>
+                            <NavLink to="/polancoEcommerc" className="navlink inicio"> INICIO </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/categories/suplementos" className="navlink">BLANCAS</NavLink>
+                            <NavLink to="/polancoEcommerc/categories/suplementos" className="navlink">BLANCAS</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/categories/articulos" className="navlink"> DE COLOR </NavLink>
+                            <NavLink to="/polancoEcommerc/categories/articulos" className="navlink"> DE COLOR </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/my-orders" className="navlink " > PEDIDOS </NavLink>
+                            <NavLink to="/polancoEcommerc/my-orders" className="navlink " > PEDIDOS </NavLink>
                         </li>
-   {/*                      <Routes>
-                    <Route path="/" element={<ItemListContainer/>}/> */}
-                        <Routes>
-                            <Route path="*"  element={<Navigate to="/" />}/> 
-                        </Routes> 
                     </ul>
                     {/* Icono de carrito de compras */}
                     <CartWidget />
@@ -49,16 +44,16 @@ const NavBar = () => {
             {/* Mismo menu pero cuando esta colapsado para mobile */}
             <ul className="sidenav sidenav-close" id="mobile-demo" >
                 <li>
-                    <NavLink to="/" className="navlink">INICIO</NavLink>
+                    <NavLink to="/polancoEcommerc" className="navlink">INICIO</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/categories/suplementos" className="navlink"> BLANCAS </NavLink>
+                    <NavLink to="/polancoEcommerc/categories/suplementos" className="navlink"> BLANCAS </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/categories/articulos" className="navlink"> DE COLOR </NavLink>
+                    <NavLink to="/polancoEcommerc/categories/articulos" className="navlink"> DE COLOR </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/my-orders" className="navlink" > PEDIDOS </NavLink>
+                    <NavLink to="/polancoEcommerc/my-orders" className="navlink" > PEDIDOS </NavLink>
                 </li>
             </ul>
         </>

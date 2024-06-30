@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const Item = ({ id, name, price, pictureUrl, description }) => {
 
     return (
-        <Link to={`/item/${id}`} >
+        <Link to={`/polancoEcommerc/item/${id}`} >
             <div className="card-container">
                 <div className="img-container">
                     <img src={pictureUrl[0]} alt=""/>

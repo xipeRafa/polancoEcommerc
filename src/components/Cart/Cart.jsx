@@ -42,7 +42,7 @@ const Cart = () => {
                         <p className="total-amount">
                         Subtotal ${ total }
                         </p>
-                        <Link to="/order" className="waves-effect btn">Finalizar compra</Link>
+                        <Link to="/polancoEcommerc/order" className="waves-effect btn">Finalizar compra</Link>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ const Cart = () => {
             <div className="cart-container-empty">
                 <i className="material-icons empty-cart">shopping_cart</i>
                 <h4 className="empty-cart-title">Parece que tu carrito está vacio <br/> </h4>
-                <Link to="/"><button className="waves-effect waves-light btn backToLanding-btn">Volver a la tienda</button></Link> 
+                <Link to="/polancoEcommerc/"><button className="waves-effect waves-light btn backToLanding-btn">Volver a la tienda</button></Link> 
             </div>
         )
     }

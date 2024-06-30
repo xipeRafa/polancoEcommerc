@@ -15,7 +15,7 @@ const NotExists = ({title}) => {
             <div className="not-exist-item">
                 <BiCommentError className="coment-error"/>
                 <h4>{title}</h4>
-                <Link to="/"><button className="waves-effect waves-light btn backToLanding-btn">Volver a la tienda</button></Link> 
+                <Link to="/polancoEcommerc/"><button className="waves-effect waves-light btn backToLanding-btn">Volver a la tienda</button></Link> 
             </div>
         </>
     )

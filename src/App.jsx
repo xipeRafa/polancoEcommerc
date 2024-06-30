@@ -6,7 +6,6 @@ import M from 'materialize-css';
 
 //CSS core de Materialize
 import 'materialize-css/dist/css/materialize.min.css';
-import { useLocation } from "react-router-dom";
 
 //Componentes
 import NavBar from  './components/NavBar/NavBar.jsx';
@@ -25,7 +24,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import {CartProvider} from './context/cartContext';
 
 //Router 
-import {  Routes,  Route } from 'react-router-dom';
+import {useLocation, Routes,Route, Navigate} from 'react-router-dom'
 
 //Css particular
 import './assets/styles/app.css'
@@ -83,12 +82,13 @@ const App = () => {
             <CartProvider>
                 <NavBar/>
                 <Routes>
-                    <Route path="/" element={<ItemListContainer/>}/>
-                    <Route path="/categories/:categoryId" element={<ItemListContainer/>}/>
-                    <Route path="/item/:id" element={<ItemDetailContainer/>}/>
-                    <Route path="/cart" element={<Cart/>}/>
-                    <Route path="/order" element={<BuyingForm/>}/>
-                    <Route path="/my-orders" element={<MyOrders/>}/>
+                    <Route path="/polancoEcommerc" element={<ItemListContainer/>}/>
+                    <Route path="/polancoEcommerc/categories/:categoryId" element={<ItemListContainer/>}/>
+                    <Route path="/polancoEcommerc/item/:id" element={<ItemDetailContainer/>}/>
+                    <Route path="/polancoEcommerc/cart" element={<Cart/>}/>
+                    <Route path="/polancoEcommerc/order" element={<BuyingForm/>}/>
+                    <Route path="/polancoEcommerc/my-orders" element={<MyOrders/>}/>
+                    <Route path="*"  element={<Navigate to="/" />}/> 
                 </Routes>
             </CartProvider>
             <Foother />
