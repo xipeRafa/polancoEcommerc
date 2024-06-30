@@ -9,7 +9,7 @@ import NotExists from '../../NotExists/NotExists';
 import {useParams} from 'react-router-dom';
 
 //Firestore
-import  /* getFirestore */ db from '../../../firebase/firebaseConfig';
+import db from '../../../firebase/firebaseConfig';
 
 import { getDocs, collection } from 'firebase/firestore'
 

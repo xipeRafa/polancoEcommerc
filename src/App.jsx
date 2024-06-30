@@ -88,7 +88,7 @@ const App = () => {
                     <Route path="/polancoEcommerc/cart" element={<Cart/>}/>
                     <Route path="/polancoEcommerc/order" element={<BuyingForm/>}/>
                     <Route path="/polancoEcommerc/my-orders" element={<MyOrders/>}/>
-                    <Route path="*"  element={<Navigate to="/" />}/> 
+                    <Route path="*"  element={<Navigate to="/polancoEcommerc" />}/> 
                 </Routes>
             </CartProvider>
             <Foother />
