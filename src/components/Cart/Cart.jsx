@@ -16,7 +16,7 @@ import CartItem from '../CartItem/CartItem';
 const Cart = () => {
 
     const { cart, total, deleteItem}= useContext(CartContext);
-    localStorage.setItem('CartLocal', cart)
+    /* localStorage.setItem('CartLocal', cart) */
 
     if (cart.length !== 0) {
 

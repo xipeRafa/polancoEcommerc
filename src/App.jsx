@@ -85,9 +85,11 @@ const App = () => {
                     <Route path="/polancoEcommerc" element={<ItemListContainer/>}/>
                     <Route path="/polancoEcommerc/categories/:categoryId" element={<ItemListContainer/>}/>
                     <Route path="/polancoEcommerc/item/:id" element={<ItemDetailContainer/>}/>
+
                     <Route path="/polancoEcommerc/cart" element={<Cart/>}/>
                     <Route path="/polancoEcommerc/order" element={<BuyingForm/>}/>
                     <Route path="/polancoEcommerc/my-orders" element={<MyOrders/>}/>
+                    
                     <Route path="*"  element={<Navigate to="/polancoEcommerc" />}/> 
                 </Routes>
             </CartProvider>

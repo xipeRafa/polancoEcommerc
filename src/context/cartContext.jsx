@@ -104,7 +104,6 @@ export const CartProvider = (props) => {
         addToCart,
         isInCart,
         cart,
-        setCart,
         items,
         updateItems,
         total,

@@ -19,7 +19,7 @@ const ItemListContainer = () => {
     const {categoryId} = useParams();//Categoria definida en ruta para saber que productos filtrar
 
     const [items, setItems] = useState([]);
-    
+    localStorage.setItem('arrItems', JSON.stringify(items))
 
     useEffect(() => {
 
@@ -51,31 +51,23 @@ const ItemListContainer = () => {
     },[]);
 
 
-
-    if (items.length > 0){
-
-        if(categoryId !== undefined){
-            return(
-
-                <div className="item-list-container">  
-                {
-                    <ItemList items={ items.filter(product => product.category === `${categoryId}`) } />
-                }  
-                </div>
-            ) 
-        }else{
-            return(
-                <div className="item-list-container ">    
-                    <ItemList items={items} />
-                </div>
-            )
-        }
-    }else{
         return(
-            <Loader/>
+
+            (items.length > 0) ?  
+
+                    (categoryId !== undefined) ?
+                        <div className="item-list-container">  
+                            <ItemList items={ items.filter(product => product.category === `${categoryId}`) } />  
+                        </div>
+                    :    
+                        <div className="item-list-container ">    
+                            <ItemList items={items} />
+                        </div>
+
+            :(<Loader/>)
+
         )
-    }
-    
+
 }
 
 export default ItemListContainer;
