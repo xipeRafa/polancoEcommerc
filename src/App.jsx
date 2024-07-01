@@ -63,16 +63,16 @@ const App = () => {
 
     }, [justEntered]);
 
-    const toasti = () => {toast('Bienvenido a nexGym', {
+    const toasti = () => {toast('Bienvenido a Polanco Guayaberas', {
         position: "top-center",
-        autoClose: 5000,
+        autoClose: 7000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined
     })};
-/*     toast.configure(); */
+    toast.configure();
 
 
     return(
@@ -89,7 +89,7 @@ const App = () => {
                     <Route path="/polancoEcommerc/cart" element={<Cart/>}/>
                     <Route path="/polancoEcommerc/order" element={<BuyingForm/>}/>
                     <Route path="/polancoEcommerc/my-orders" element={<MyOrders/>}/>
-                    
+
                     <Route path="*"  element={<Navigate to="/polancoEcommerc" />}/> 
                 </Routes>
             </CartProvider>

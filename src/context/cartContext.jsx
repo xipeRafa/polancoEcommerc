@@ -103,6 +103,7 @@ export const CartProvider = (props) => {
       value={{
         addToCart,
         isInCart,
+        setCart,
         cart,
         items,
         updateItems,

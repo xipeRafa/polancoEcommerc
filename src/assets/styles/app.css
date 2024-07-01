@@ -5,16 +5,16 @@
   background-color: #373F47;
   border-radius: 5px;
   line-height: 25px;
-  box-shadow: 0px 0px 4px 1px #E0FF00;
+  box-shadow: 0px 0px 4px 1px #ce3939;
   padding: 15px;
 }
 
 .Toastify__toast .Toastify__close-button {
-  color: #E0FF00;
+  color: #ffffff;
   opacity: 1;
 }
 
 .Toastify__toast .Toastify__progress-bar--default {
   background-image: none;
-  background-color: #E0FF00;
+  background-color: #ffffff;
 }

@@ -1,80 +1,32 @@
-import React,{useContext, useState, useEffect} from 'react';
+import React,{useState} from 'react';
 
 //Luxon
-import { DateTime } from 'luxon';
+/* import { DateTime } from 'luxon'; */
 
-//Context
-import {CartContext} from '../../context/cartContext';
-
-//Firestore
-import db from '../../firebase/firebaseConfig';
-
-//Components
-import Loader from '../Loader/Loader';
 
 //Css particular
 import './MyOrders.css';
 
-import { getDocs, collection } from 'firebase/firestore'
 
 const MyOrders = () => {
 
-    const { orderIds ,setOrderIds  } = useContext(CartContext);
-
-    const [ ordersInfo, setOrdersInfo ] = useState([]);
-    const [ loading, setLoading ] = useState(true);
 
 
-    useEffect(() => {
+    const [ ordersInfo, setOrdersInfo ] = useState([JSON.parse(localStorage.getItem("lastOrder"))]);
 
-        let isMounted = true;
+    
 
-       /*  const db = getFirestore(); */
-
-        // En "getOrders", "itemRefs" devuelve una promesa del documento especifico por cada id de compra que hay en el array de ids "orderIds".
-        // Luego voy a esperar que se resuelvan todas esas promesas con un Promise.All y ahi si llamar a setOrdersInfo para guardar la informacion.
-        if (isMounted) {
-            const getOrders = (orderIds, setOrdersInfo) => {
-
-                let itemRefs = orderIds.map( ({id}) => {
-                    return collection(db, 'orders').doc(id).get();
-                });
-        
-                Promise.all(itemRefs)
-                .then(docs => {
-        
-                    let items = docs.map(doc => ({id: doc.id, ...doc.data() } ) );
-                    //Reverse para que la ultima compra figure arriba
-                    setOrdersInfo(items.reverse())
-                })
-                .catch(e => console.log(e))
-                .finally(()=>{
-                    setLoading(false)
-                })
-        
-            };
-            getOrders( orderIds, setOrdersInfo);
-
-            return () => {
-                isMounted = false; 
-            };
-        }
+   
 
 
-    }, [orderIds]);
+console.log(ordersInfo)
 
-    const time = (seconds)=> {
-
-        return  DateTime.fromSeconds(seconds)
-    }
-
-    if(loading) {
-        return(
-            <Loader/>
-        )
-    } else {
+  
         return (
+               
+        
 
+                    
             <div className="orders-container">
                 <div className="orders-organizer">
                     <h3 className="title">Mis Compras{' '}
@@ -82,8 +34,9 @@ const MyOrders = () => {
                     <button 
                         className="waves-effect waves-light btn"
                         onClick={()=> {
-                            localStorage.removeItem('my-orders');
-                            setOrderIds([])
+                            localStorage.removeItem('lastOrder');
+                         /*    setOrderIds([]) */
+                            setOrdersInfo([])
                         }}>
                         Borrar
                     </button> 
@@ -91,44 +44,42 @@ const MyOrders = () => {
                     <div className="orders-columns">
                         <p>Fecha</p>
                         <p>Productos</p>
-                        <p>Codigo de pedido</p>
+                        <p>Correo</p>
                         <p>Total</p>
                     </div>
                     <div className="orders">
-                        {   
-                            ordersInfo.length > 0 && (
-    
-                                ordersInfo.map( ({ id, total, date, items }) =>
-    
-                                    <div className="order-row" key={id}>
+                      
+                            {
+                                  
+                                ordersInfo.map( (el) =>(
+
+                            
+                                   <div className="order-row" key={el?.buyer.email}>
                                         <div className="order-info date" >
-                                            {   
-                                                date &&
-                                                `${time(date.seconds).c.day}/${time(date.seconds).c.month}/${time(date.seconds).c.year} 
-                                                ${time(date.seconds).c.hour}:${time(date.seconds).c.minute} `
-                                            }                           
+                                            {el?.date.slice(0,16)}
+                                                              
                                         </div>
                                         <div className="order-info items">
                                             <ul>
                                             {
-                                                items &&
-                                                items.map(item => <li className="truncate" key={item.id}> {item.qty} x {item.item} </li> )
+                                                el?.items &&
+                                                el?.items.map(item => <li className="truncate" key={item?.id}> {item?.qty} x {item?.item} </li> )
                                             }
                                             </ul>
                                         </div>
-                                        <div className="order-info id "> { id } </div>
-                                        <div className="order-info total"> ${ total } </div>
-                                    </div>
-                                )
-                            )
-                        }
+                                        <div className="order-info id "> { el?.buyer.email } </div>
+                                        <div className="order-info total"> ${ el?.total } </div>
+                                    </div> 
+                            )) }
+                     
                     </div>
                 </div>
             </div>
+        
         )
     }
 
-}
+
 
 export default MyOrders
 
