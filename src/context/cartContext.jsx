@@ -3,6 +3,8 @@ import React, { useState, createContext, useEffect } from "react";
 export const CartContext = createContext({});
 
 export const CartProvider = (props) => {
+
+
   const itemsInLocal = () => {
     if (localStorage.getItem("cart") !== null) {
       return JSON.parse(localStorage.getItem("cart"));
@@ -10,6 +12,16 @@ export const CartProvider = (props) => {
       return [];
     }
   };
+
+  const itemsInLocal2 = () => {
+    if (localStorage.getItem("lastOrder") !== null) {
+      return JSON.parse(localStorage.getItem("lastOrder"));
+    } else {
+      return [];
+    }
+  };
+
+
   const ordersInLocal = () => {
     if (localStorage.getItem("my-orders-Ids") !== null) {
       return JSON.parse(localStorage.getItem("my-orders-Ids"));
@@ -18,28 +30,42 @@ export const CartProvider = (props) => {
     }
   };
 
+ 
+
+
+
   const [cart, setCart] = useState(itemsInLocal);
   const [items, setItems] = useState(0);
   const [total, setTotal] = useState(0);
   const [orderIds, setOrderIds] = useState(ordersInLocal);
 
-  const[stateLastOrderInLS,setStateLastOrderInLS]=useState([])
+  const[stateLastOrderInLS,setStateLastOrderInLS]=useState(itemsInLocal2)
+
+
   
   const orderF=(order)=>{
-      setStateLastOrderInLS([...stateLastOrderInLS, order])
+      if (localStorage.getItem("lastOrder") !== null) {
+        setStateLastOrderInLS([...stateLastOrderInLS, order])
+        console.log('true')
+      } else {
+        setStateLastOrderInLS([])
+        console.log('false')
+      }
   }
 
+  console.log(stateLastOrderInLS)
 
 
   useEffect(() => {
     updateItems();
     localStorage.setItem("my-orders-Ids", JSON.stringify(orderIds));
     localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("lastOrder", JSON.stringify(stateLastOrderInLS));
     getTotal();    
   });
 
 
-  
+
   
 
   const addToCart = (obj) => {

@@ -13,8 +13,8 @@ import './MyOrders.css';
 const MyOrders = () => {
 
     const { stateLastOrderInLS } = useContext(CartContext);
-
     localStorage.setItem('lastOrder', JSON.stringify(stateLastOrderInLS))
+    
   
         return (
                
