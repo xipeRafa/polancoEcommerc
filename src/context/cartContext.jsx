@@ -45,15 +45,12 @@ export const CartProvider = (props) => {
   
   const orderF=(order)=>{
       if (localStorage.getItem("lastOrder") !== null) {
-        setStateLastOrderInLS([...stateLastOrderInLS, order])
-        console.log('true')
+          setStateLastOrderInLS([...stateLastOrderInLS, order])
       } else {
-        setStateLastOrderInLS([])
-        console.log('false')
+          setStateLastOrderInLS([])
       }
   }
 
-  console.log(stateLastOrderInLS)
 
 
   useEffect(() => {

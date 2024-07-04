@@ -172,7 +172,7 @@ const BuyingForm = () => {
                     } */
         
                     const documents = querySnapshot.docs.map( doc => ( {id: doc.id, ...doc.data()} ) )
-                    console.log(documents)
+                    //console.log(documents)
                   /*   setItems( documents ) ; */
                /*  } */
             })
@@ -213,7 +213,6 @@ const BuyingForm = () => {
                     <div className="input-field">
                         <i className="material-icons prefix">account_circle</i>
                         <input 
-                        value='rafael angel'
                             name="name" 
                             id="name" 
                             type="text" 
@@ -246,7 +245,7 @@ const BuyingForm = () => {
                     <div className='input-field'>
                         <i className="material-icons prefix">directions</i>
                         <select className="browser-default city" onChange={handleSelectCity} value={selectCity}>
-                           {/*  <option value="" disabled >Elija su Ciudad</option> */}
+                            <option value="" disabled >Elija su Ciudad</option> 
                             <option value="hermosillo">Hermosillo</option>
                             <option value="san carlos">San Carlos</option>
                         </select>
@@ -255,7 +254,6 @@ const BuyingForm = () => {
                     <div className="input-field">
                         <i className="material-icons prefix">phone</i>
                         <input 
-                        value='6621891032'
                             name="telephone" 
                             id="telephone" 
                             type="tel" 
@@ -274,7 +272,6 @@ const BuyingForm = () => {
                     <div className="input-field">
                         <i className="material-icons prefix">email</i>
                         <input 
-                        value='rafa@gmail.com'
                             name="email" 
                             id="email" 
                             type="email" 
@@ -293,7 +290,6 @@ const BuyingForm = () => {
                     <div className="input-field">
                         <i className="material-icons prefix">email</i>
                         <input 
-                         value='rafa@gmail.com'
                             name="confirmEmail" 
                             id="confirmEmail" 
                             type="email" 

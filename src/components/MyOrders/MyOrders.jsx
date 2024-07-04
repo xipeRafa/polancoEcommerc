@@ -12,8 +12,8 @@ import './MyOrders.css';
 
 const MyOrders = () => {
 
-    const { stateLastOrderInLS } = useContext(CartContext);
-    localStorage.setItem('lastOrder', JSON.stringify(stateLastOrderInLS))
+    const { stateLastOrderInLS, /* setStateLastOrderInLS  */} = useContext(CartContext);
+
     
   
         return (
@@ -25,15 +25,14 @@ const MyOrders = () => {
                 <div className="orders-organizer">
                     <h3 className="title">Mis Compras{' '}
     
-                    <button 
-                        className="waves-effect waves-light btn"
+                  {/*   <button 
+                        className="waves-effect waves-light btn d-none"
                         onClick={()=> {
-                            //localStorage.removeItem('lastOrder');
-                         /*    setOrderIds([]) */
-                            setOrdersInfo([])
+                         localStorage.setItem("lastOrder", '[]');
+                         setStateLastOrderInLS([])
                         }}>
                         Borrar
-                    </button> 
+                    </button>  */}
                     </h3>
                     <div className="orders-columns">
                         <p>Fecha</p>
@@ -43,13 +42,11 @@ const MyOrders = () => {
                     </div>
                     <div className="orders">
 
-                        {
-                     (stateLastOrderInLS).length === 0  ? <p> .- No hay pedidos</p>:<div>
-                            {
-                                  
+                   {
+                     (stateLastOrderInLS).length === 0  ? <p> .- No hay pedidos</p>:
+                        <div>
+                            {  
                                 stateLastOrderInLS.map(el =>(
-
-                            
                                     <div className="order-row" key={el.buyer.email}>
                                         <div className="order-info date" >
                                             {el.date.slice(0,16)}
@@ -66,7 +63,10 @@ const MyOrders = () => {
                                         <div className="order-info id "> { el.buyer.email } </div>
                                         <div className="order-info total"> ${ el.total } </div>
                                     </div> 
-)) }</div>}
+                                )) 
+                            }    
+                        </div>
+                    }
                      
                     </div>
                 </div>
