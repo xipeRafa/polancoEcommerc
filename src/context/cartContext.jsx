@@ -11,8 +11,8 @@ export const CartProvider = (props) => {
     }
   };
   const ordersInLocal = () => {
-    if (localStorage.getItem("my-orders") !== null) {
-      return JSON.parse(localStorage.getItem("my-orders"));
+    if (localStorage.getItem("my-orders-Ids") !== null) {
+      return JSON.parse(localStorage.getItem("my-orders-Ids"));
     } else {
       return [];
     }
@@ -23,12 +23,24 @@ export const CartProvider = (props) => {
   const [total, setTotal] = useState(0);
   const [orderIds, setOrderIds] = useState(ordersInLocal);
 
+  const[stateLastOrderInLS,setStateLastOrderInLS]=useState([])
+  
+  const orderF=(order)=>{
+      setStateLastOrderInLS([...stateLastOrderInLS, order])
+  }
+
+
+
   useEffect(() => {
     updateItems();
+    localStorage.setItem("my-orders-Ids", JSON.stringify(orderIds));
     localStorage.setItem("cart", JSON.stringify(cart));
-    localStorage.setItem("my-orders", JSON.stringify(orderIds));
-    getTotal();
+    getTotal();    
   });
+
+
+  
+  
 
   const addToCart = (obj) => {
     // Primero busco si ya existe dentro del array del state Cart un objeto que tenga
@@ -71,6 +83,7 @@ export const CartProvider = (props) => {
         }
       ]);
     }
+   // localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   const isInCart = (itemName) => {
@@ -112,7 +125,10 @@ export const CartProvider = (props) => {
         orderIds,
         setOrderIds,
         itemsInLocal,
-        ordersInLocal
+        ordersInLocal,
+        stateLastOrderInLS,
+        setStateLastOrderInLS,
+        orderF
       }}
     >
       {props.children}

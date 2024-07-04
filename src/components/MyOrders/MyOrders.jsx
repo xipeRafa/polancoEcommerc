@@ -1,8 +1,10 @@
-import React,{useState} from 'react';
+import React,{useContext} from 'react';
 
 //Luxon
 /* import { DateTime } from 'luxon'; */
 
+
+import {CartContext} from '../../context/cartContext';
 
 //Css particular
 import './MyOrders.css';
@@ -10,17 +12,9 @@ import './MyOrders.css';
 
 const MyOrders = () => {
 
+    const { stateLastOrderInLS } = useContext(CartContext);
 
-
-    const [ ordersInfo, setOrdersInfo ] = useState([JSON.parse(localStorage.getItem("lastOrder"))]);
-
-    
-
-   
-
-
-console.log(ordersInfo)
-
+    localStorage.setItem('lastOrder', JSON.stringify(stateLastOrderInLS))
   
         return (
                
@@ -34,7 +28,7 @@ console.log(ordersInfo)
                     <button 
                         className="waves-effect waves-light btn"
                         onClick={()=> {
-                            localStorage.removeItem('lastOrder');
+                            //localStorage.removeItem('lastOrder');
                          /*    setOrderIds([]) */
                             setOrdersInfo([])
                         }}>
@@ -48,29 +42,31 @@ console.log(ordersInfo)
                         <p>Total</p>
                     </div>
                     <div className="orders">
-                      
+
+                        {
+                     (stateLastOrderInLS).length === 0  ? <p> .- No hay pedidos</p>:<div>
                             {
                                   
-                                ordersInfo.map( (el) =>(
+                                stateLastOrderInLS.map(el =>(
 
                             
-                                   <div className="order-row" key={el?.buyer.email}>
+                                    <div className="order-row" key={el.buyer.email}>
                                         <div className="order-info date" >
-                                            {el?.date.slice(0,16)}
+                                            {el.date.slice(0,16)}
                                                               
                                         </div>
                                         <div className="order-info items">
                                             <ul>
                                             {
-                                                el?.items &&
-                                                el?.items.map(item => <li className="truncate" key={item?.id}> {item?.qty} x {item?.item} </li> )
+                                                el.items && 
+                                                el.items.map(item => <li className="truncate" key={item.id}> {item.qty} x {item.item} </li> )
                                             }
                                             </ul>
                                         </div>
-                                        <div className="order-info id "> { el?.buyer.email } </div>
-                                        <div className="order-info total"> ${ el?.total } </div>
+                                        <div className="order-info id "> { el.buyer.email } </div>
+                                        <div className="order-info total"> ${ el.total } </div>
                                     </div> 
-                            )) }
+)) }</div>}
                      
                     </div>
                 </div>

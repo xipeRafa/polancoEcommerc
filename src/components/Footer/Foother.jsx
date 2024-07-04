@@ -2,7 +2,7 @@ import './Foother.css'
 
 import pedidos from '../../imgs/polanco/pedidos.jpg'
 import mujer from '../../imgs/polanco/mujer.png'
-import logo3 from '../../imgs/polanco/shipping.svg'
+import logo3 from '../../imgs/shipping.svg'
 import banner from '../../imgs/polanco/6.png'
 import nueve from '../../imgs/polanco/9.png'
 

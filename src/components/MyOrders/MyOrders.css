@@ -98,7 +98,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
   }
-  .orders-container .orders-organizer .orders .order-row .id:hover, .orders-container .orders-organizer .orders .order-row .items:hover {
+  /* .orders-container .orders-organizer .orders .order-row .id:hover, .orders-container .orders-organizer .orders .order-row .items:hover {
     position: absolute;
     border: solid 2px #373F47;
     width: -webkit-fit-content;
@@ -108,7 +108,7 @@
     padding: 3px;
     z-index: 1;
     user-select: none;
-  }
+  } */
 }
 
 .orders-container .orders-organizer .orders .order-row .id {

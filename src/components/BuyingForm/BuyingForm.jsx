@@ -25,17 +25,21 @@ import './BuyingForm.css';
 //CSS core de Materialize
 import 'materialize-css/dist/css/materialize.min.css';
 
+import { useNavigate } from "react-router-dom";
+
+
 
 const BuyingForm = () => {
 
-    const { cart, setCart, total, orderIds, setOrderIds, itemsInLocal } = useContext(CartContext);
-
+    const { cart, setCart, total, orderIds, setOrderIds, itemsInLocal,stateLastOrderInLS,
+      setStateLastOrderInLS, orderF } = useContext(CartContext);
 
 
     const { register, handleSubmit, watch, errors } = useForm();
 
     const email = watch("email");
     const confirmEmail = watch("confirmEmail");
+
 
     const [passErr, setPassErr] = useState(false);
  
@@ -46,16 +50,18 @@ const BuyingForm = () => {
 
     const[noDeliver, setNoDeliver]=useState(false)
 
+ 
 
-    //Si el carrito no esta vacio entonces mando notificacion motivacional
-    //De lo contrario redirigo al usuario a la home page
-    
-  /*   useEffect(() =>{
+    useEffect(() =>{
         if (cart.length !== 0){
             motivationNotif()
         } 
           
-    }, [cart,history]); */
+    }, [cart]);
+
+
+
+    const navigate = useNavigate();
 
     /* ===================================== selects ======================= */
 
@@ -67,7 +73,7 @@ const BuyingForm = () => {
       setSelectCity(e.target.value);
     }
 
-    const motivationNotif = () => {toast('Estas a solo un paso!! Completa los datos por favor', {
+    const motivationNotif = () => {toast('Estas a solo un paso!!  Completa los datos por favor', {
         position: "bottom-left",
         autoClose: 7500,
         hideProgressBar: false,
@@ -108,10 +114,10 @@ const BuyingForm = () => {
     } */
 
     const handleOrder = (data)=> { //==========================================================//
-
+console.log(data)
         if (data) {
 
-            let order = 
+            const order = 
             {
                 buyer: {
                     name:  data.name,
@@ -141,10 +147,18 @@ const BuyingForm = () => {
                 taken:false
             }
 
-            localStorage.setItem('lastOrder', JSON.stringify(order))
+
+            orderF(order)
+
+      
+         
+         
+          
+
+           localStorage.setItem('cart','[]');
           }
 
-
+          
     
           /*   const db = getFirestore(); */
             const itemCollection = collection(db, "orders");
@@ -167,14 +181,18 @@ const BuyingForm = () => {
             });
     
 
+            
+            navigate('/polancoEcommerc/my-orders')
+           
 
-       
-         
+            setCart([])
+
+           
     
 
  /*
             setLoading(true);
-            localStorage.removeItem('cart');
+            
                  updateStocks(); 
                 purchaseNotif();
          */
@@ -208,7 +226,7 @@ const BuyingForm = () => {
                         { errors.name && <small>{ errors.name.message }</small> }
                     </div>
 
-                    <div className="input-field">
+               {/*      <div className="input-field">
                         <i className="material-icons prefix">directions</i>
                         <input 
                             name="adress" 
@@ -222,7 +240,7 @@ const BuyingForm = () => {
                         />
                         <label htmlFor="adress">Direccion</label>
                         { errors.lastname && <small>{ errors.lastname.message }</small> }
-                    </div>
+                    </div> */}
 
                     <div className='input-field'>
                         <i className="material-icons prefix">directions</i>
@@ -318,7 +336,7 @@ const BuyingForm = () => {
                         ) : (
                             <button disabled={ confirmEmail !== email } type="submit" 
                                     className= "waves-effect btn btn-buy ">
-                                Finalizar compra
+                                { passErr ? <small>{ "Sus emails son diferentes"}</small> : 'finalizar compra' }
                             </button>
                         )
                     }
