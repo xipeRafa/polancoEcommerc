@@ -56,7 +56,7 @@ const MyOrders = () => {
                                             <ul>
                                             {
                                                 el.items && 
-                                                el.items.map(item => <li className="truncate" key={item.id}> {item.qty} x {item.item} </li> )
+                                                el.items.map(item => <li className="truncate" key={item.id}> {item.quantity} x {item.name} </li> )
                                             }
                                             </ul>
                                         </div>
