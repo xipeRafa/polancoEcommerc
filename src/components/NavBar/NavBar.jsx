@@ -28,10 +28,10 @@ const NavBar = () => {
                             <NavLink to="/polancoEcommerc" className="navlink inicio"> INICIO </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/polancoEcommerc/categories/suplementos" className="navlink">BLANCAS</NavLink>
+                            <NavLink to="/polancoEcommerc/categories/blanco" className="navlink">BLANCAS</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/polancoEcommerc/categories/articulos" className="navlink"> DE COLOR </NavLink>
+                            <NavLink to="/polancoEcommerc/categories/color" className="navlink"> DE COLOR </NavLink>
                         </li>
                         <li>
                             <NavLink to="/polancoEcommerc/my-orders" className="navlink " > PEDIDOS </NavLink>
@@ -47,10 +47,10 @@ const NavBar = () => {
                     <NavLink to="/polancoEcommerc" className="navlink">INICIO</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/polancoEcommerc/categories/suplementos" className="navlink"> BLANCAS </NavLink>
+                    <NavLink to="/polancoEcommerc/categories/blanco" className="navlink"> BLANCAS </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/polancoEcommerc/categories/articulos" className="navlink"> DE COLOR </NavLink>
+                    <NavLink to="/polancoEcommerc/categories/color" className="navlink"> DE COLOR </NavLink>
                 </li>
                 <li>
                     <NavLink to="/polancoEcommerc/my-orders" className="navlink" > PEDIDOS </NavLink>
