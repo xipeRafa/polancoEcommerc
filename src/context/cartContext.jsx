@@ -66,9 +66,14 @@ export const CartProvider = (props) => {
   
 
   const addToCart = (obj) => {
+
+    console.log(obj)
+    setCart([...cart, obj]);
+
+
     // Primero busco si ya existe dentro del array del state Cart un objeto que tenga
     // el mismo nombre que el que quiero agregar al carrito, si no existe ahi si lo agrego.
-    const duplicate = cart.find((product) => product.item === obj.item);
+    /*const duplicate = cart.find((product) => product.item === obj.item);
 
     if (duplicate !== undefined) {
       const indexOfDuplicate = cart.findIndex(
@@ -76,38 +81,19 @@ export const CartProvider = (props) => {
       );
 
       cart.splice(indexOfDuplicate, 1, {
-        item: obj.item,
+        //item: obj.item,
         quantity: obj.quantity + duplicate.quantity,
         price: obj.price,
         img: obj.img,
         id: obj.id,
         stock: obj.stock,
-        perisur: obj.perisur,
-        quiroga: obj.quiroga,
-        navojoa: obj.navojoa,
-        cseri: obj.cseri,
-        progreso: obj.progreso,
+       
       });
     } else {
-      setCart([
-        ...cart,
-        {
-          item: obj.item,
-          quantity: obj.quantity,
-          price: obj.price,
-          img: obj.img,
-          id: obj.id,
-          stock: obj.stock,
-          perisur: obj.perisur,
-          quiroga: obj.quiroga,
-          navojoa: obj.navojoa,
-          cseri: obj.cseri,
-          progreso: obj.progreso,
-        }
-      ]);
-    }
+      setCart([...cart, obj]);
+    }*/
    // localStorage.setItem("cart", JSON.stringify(cart));
-  };
+  }
 
   const isInCart = (itemName) => {
     const isIn = cart.find((product) => product.item === itemName);
@@ -129,7 +115,7 @@ export const CartProvider = (props) => {
   };
 
   const deleteItem = (itemName) => {
-    const editedItems = cart.filter((product) => product.item !== itemName);
+    const editedItems = cart.filter((product) => product.name !== itemName);
     setCart(editedItems);
     localStorage.setItem("cart", JSON.stringify(editedItems));
   };

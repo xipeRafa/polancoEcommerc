@@ -26,7 +26,7 @@ const ItemListContainer = () => {
         let isMounted = true;
 
       /*   const db = getFirestore(); */
-        const itemCollection = collection(db, "items");
+        const itemCollection = collection(db, "inventario");
 
         getDocs(itemCollection).then(( querySnapshot ) => {
 
@@ -38,6 +38,7 @@ const ItemListContainer = () => {
     
                 const documents = querySnapshot.docs.map( doc => ( {id: doc.id, ...doc.data()} ) )
                 setItems( documents ) ;
+                console.log(documents)
             }
         })
         .catch(err => {

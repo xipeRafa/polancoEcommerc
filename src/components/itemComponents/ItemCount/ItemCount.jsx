@@ -11,6 +11,10 @@ import './ItemCount.css'
 
 const ItemCount = ({ setIsAdded, initial, stock, item }) => {
 
+    console.log(item)
+
+    console.log(setIsAdded, initial, stock, item)
+
     const { addToCart, isInCart, updateItems } = useContext(CartContext);
 
     // En caso que no haya stock cambio el valor inicial por "Sin stock"
@@ -90,19 +94,9 @@ const ItemCount = ({ setIsAdded, initial, stock, item }) => {
 
                 <button
                     onClick={() => {
-                        addToCart({ 
-                                item: item.name,
-                                quantity: counter, 
-                                price: item.price, 
-                                img: item.pictureUrl[0], 
-                                id: item.id, 
-                                stock: item.stock,
-                                perisur: item.perisur,
-                                quiroga: item.quiroga,
-                                navojoa: item.navojoa,
-                                cseri: item.cseri,
-                                progreso: item.progreso
-                        });
+                        item.quantity = counter
+                        item.GlobalStock = stock
+                        addToCart(item);
                         setCounter(initial);
                         setIsAdded(true);
                         updateItems();

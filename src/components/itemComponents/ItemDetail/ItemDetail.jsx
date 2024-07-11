@@ -24,34 +24,34 @@ const ItemDetail = ({item}) => {
                         <div className="small-images">
                             <div className="sm-img" 
                                 style={{ 
-                                    backgroundImage: `url(${item.pictureUrl[0]})` 
+                                    backgroundImage: `url(${item.imgUrl})` 
                                 }}
-                                onMouseOver={ () => setBigImg({backgroundImage: `url(${item.pictureUrl[0] })`})}
+                                onMouseOver={ () => setBigImg({backgroundImage: `url(${item.imgUrl })`})}
                             >
                             </div>
                             <div className="sm-img" 
                                 style={{
-                                    backgroundImage: `url(${ item.pictureUrl[1] !== undefined ? item.pictureUrl[1] : item.pictureUrl[0] })` 
+                                    backgroundImage: `url(${ item.imgUrl[1] !== undefined ? item.imgUrl[1] : item.imgUrl[0] })` 
                                 }}
-                                onMouseOver={ () => setBigImg({backgroundImage: `url(${item.pictureUrl[1] !== undefined ? item.pictureUrl[1] : item.pictureUrl[0] })`})}
+                                onMouseOver={ () => setBigImg({backgroundImage: `url(${item.imgUrl[1] !== undefined ? item.imgUrl[1] : item.imgUrl[0] })`})}
                             >
                             </div>
                             <div className="sm-img" 
                                 style={{
-                                    backgroundImage: `url(${item.pictureUrl[2] !== undefined ? item.pictureUrl[2] : item.pictureUrl[0] })`,
+                                    backgroundImage: `url(${item.imgUrl[2] !== undefined ? item.imgUrl[2] : item.imgUrl[0] })`,
                                 }}
                                 onMouseOver={ () =>{
-                                    setBigImg({backgroundImage: `url(${item.pictureUrl[2] !== undefined ? item.pictureUrl[2] : item.pictureUrl[0] })`});
+                                    setBigImg({backgroundImage: `url(${item.imgUrl[2] !== undefined ? item.imgUrl[2] : item.imgUrl[0] })`});
                                 }}
                             >
                             </div>
                         </div>
                         <div className="big-image" 
-                            style={bigImg !== '' ? bigImg : { backgroundImage: `url(${item?.pictureUrl[0] })`} }
+                            style={bigImg !== '' ? bigImg : { backgroundImage: `url(${item?.imgUrl})`} }
                             >      
                         </div>
                     </div>
-                    <ItemCount isAdded={isAdded} setIsAdded={setIsAdded} initial={item.initial} stock={item.stock} item={item} /> 
+                     <ItemCount isAdded={isAdded} setIsAdded={setIsAdded} initial={1} stock={Number(item.stockHermosillo) + Number(item.stockSanCarlos)} item={item} /> 
                     {
                         isAdded 
                             && 
@@ -64,7 +64,8 @@ const ItemDetail = ({item}) => {
  
                     <h4 className="item-name">{item.name}</h4>
                     <h4>${item.price}</h4>
-                    <p>STOCK: {item.stock}</p>
+                    <p>STOCK Hermosillo: {item.stockHermosillo}</p>
+                    <p>STOCK San Carlos: {item.stockSanCarlos}</p>
                     <small>COD: { item.id}</small>
                     <h6>Description: {item.description}</h6>
                 </div>

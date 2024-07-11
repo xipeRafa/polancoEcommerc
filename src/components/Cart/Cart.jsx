@@ -18,6 +18,8 @@ const Cart = () => {
     const { cart, total, deleteItem}= useContext(CartContext);
     /* localStorage.setItem('CartLocal', cart) */
 
+    console.log(cart)
+
     if (cart.length !== 0) {
 
         return (
@@ -33,8 +35,8 @@ const Cart = () => {
                     </div>
                     <div className="cart-items">
                         {
-                            cart.map( ({ item, quantity, price, img }) =>(
-                                <CartItem key={item} item={item} quantity={quantity} price={price} img={img} deleteItem={deleteItem}  />
+                            cart.map( ({ name, quantity, price, imgUrl }) =>(
+                                <CartItem key={String(price+23235423)} name={name} quantity={quantity} price={price} imgUrl={imgUrl} deleteItem={deleteItem}  />
                             ))
                         }
                     </div>

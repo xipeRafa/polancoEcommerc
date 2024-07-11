@@ -11,7 +11,19 @@ import NotExists from '../NotExists/NotExists';
 //Firestore
 /* import { getFirestore } from '../../firebase/firebaseConfig'; */
 import db from '../../firebase/firebaseConfig';
-import { getDocs, collection } from 'firebase/firestore'
+import { getDocs, collection, addDoc } from 'firebase/firestore'
+
+/*import {
+  getDocs,
+  collection,
+  addDoc,
+  deleteDoc,
+  doc,
+  updateDoc,
+  where,
+  query,
+} from 'firebase/firestore';*/
+
 
 //Context
 import {CartContext} from '../../context/cartContext';
@@ -34,6 +46,7 @@ const BuyingForm = () => {
     const { cart, setCart, total, orderIds, setOrderIds, itemsInLocal,stateLastOrderInLS,
       setStateLastOrderInLS, orderF } = useContext(CartContext);
 
+      console.log(cart)
 
     const { register, handleSubmit, watch, errors } = useForm();
 
@@ -113,8 +126,12 @@ const BuyingForm = () => {
 
     } */
 
-    const handleOrder = (data)=> { //==========================================================//
 
+    const postCollection = collection(db, 'orders');
+
+    const handleOrder = (data)=> { //==========================================================//
+                        
+                        console.log(data)
         if (data) {
 
             const order = 
@@ -123,36 +140,28 @@ const BuyingForm = () => {
                     name:  data.name,
                     phone: data.telephone,
                     email: data.email,
-                    adress: data.adress
+
                 },
-                items: cart.map(item => ({
-                    id: item.id,
-                    item: item.item,
-                    price: item.price,
-                    qty: item.quantity,
-                    cseri:item.cseri,
-                    quiroga:item.quiroga,
-                    perisur:item.perisur,
-                    progreso:item.progreso,
-                    navojoa:item.navojoa,
-                    stock:item.stock
-                })),
+                items: cart,
                 date: String(new Date()),
                 total: total,
-                entregado: false,
-                deliver:'',
-                noDeliver:noDeliver,
                 city:selectCity,
-               /*  sucursal:selectState, */
-                taken:false
+                takenByCustomer:false
             }
 
 
             orderF(order)
+            console.log(order)
 
-      
+              
          
-         
+         addDoc(postCollection, order).then((x) => {
+                console.log(x)
+    
+        })
+        .catch((error) => {
+          console.log('ocurrio un error: ', error);
+        });
           
 
            localStorage.setItem('cart','[]');
@@ -160,7 +169,6 @@ const BuyingForm = () => {
 
           
     
-          /*   const db = getFirestore(); */
             const itemCollection = collection(db, "orders");
     
             getDocs(itemCollection).then(( querySnapshot ) => {
