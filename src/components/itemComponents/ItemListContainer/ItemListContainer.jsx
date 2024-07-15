@@ -39,6 +39,9 @@ const ItemListContainer = () => {
                 const documents = querySnapshot.docs.map( doc => ( {id: doc.id, ...doc.data()} ) )
                 setItems( documents ) ;
                 console.log(documents)
+
+
+               
             }
         })
         .catch(err => {

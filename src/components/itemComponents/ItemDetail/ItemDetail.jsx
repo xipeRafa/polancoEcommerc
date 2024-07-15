@@ -63,7 +63,7 @@ const ItemDetail = ({item}) => {
                 <div className="title-price">
  
                     <h4 className="item-name">{item.name}</h4>
-                    <h4>${item.price}</h4>
+                    <h4>$ {item.price}</h4>
                     <p>STOCK Hermosillo: {item.stockHermosillo}</p>
                     <p>STOCK San Carlos: {item.stockSanCarlos}</p>
                     <small>COD: { item.id}</small>

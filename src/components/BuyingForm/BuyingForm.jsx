@@ -10,7 +10,7 @@ import NotExists from "../NotExists/NotExists";
 //Firestore
 /* import { getFirestore } from '../../firebase/firebaseConfig'; */
 import db from "../../firebase/firebaseConfig";
-import { getDocs, collection, addDoc } from "firebase/firestore";
+import { getDocs, collection, addDoc, doc, updateDoc } from "firebase/firestore";
 
 /*import {
   getDocs,
@@ -64,17 +64,25 @@ const BuyingForm = () => {
 
     const [noDeliver, setNoDeliver] = useState(false);
 
+
+
     useEffect(() => {
         if (cart.length !== 0) {
             motivationNotif();
         }
     }, [cart]);
 
+
+
     const navigate = useNavigate();
+
+
+
 
     /* ===================================== selects ======================= */
 
     const [selectCity, setSelectCity] = useState("");
+
 
     const handleSelectCity = (e) => {
         setSelectCity(e.target.value);
@@ -105,29 +113,73 @@ const BuyingForm = () => {
     toast.configure();
 
     //Funcion para actualizr los stocks en firestore de los productos recien comprados
-    /*   const updateStocks = () => {
+      const updateStocks = () => {
 
         cart.forEach( item => {
+
             bache.update(itemCollection.doc(item.id),{stock: item.stock - item.quantity})
+
             if(selectState !== ''){
                 bache.update(itemCollection.doc(item.id),{[selectState]: item[selectState] - item.quantity})
-            }  
+            }
+
         })
+
         console.log(cart)
 
-        bache
-        .commit()
-        .then(()=> {
+        bache.commit().then(()=> {
             console.log("Bache ok")
         })
         .catch(e => console.log(e))
 
-    } */
+    } 
+
+
+    const UpdateById = async () => {
+
+        const arrItemsOrders = JSON.parse(localStorage.lastOrder)[0].items
+        const cityItem = JSON.parse(localStorage.lastOrder)[0].city
+
+
+        arrItemsOrders.map((el,i)=>{
+
+            
+
+            if(cityItem ==='hermosillo'){
+
+                const elItem = el
+
+                elItem.stockHermosillo = el.stockHermosillo - el.quantity
+
+                const aDoc = doc(db, 'inventario', el.id);
+
+                updateDoc(aDoc, elItem)
+
+            }else{
+
+                const elSC = el
+
+                console.log('sanCarlos')
+
+                elSC.stockSanCarlos = el.stockSanCarlos - el.quantity
+
+                const aaDoc = doc(db, 'inventario', el.id);
+
+                updateDoc(aaDoc, elSC)
+
+            }
+
+                
+                        
+        })
+
+  };
+
+
 
     const postCollection = collection(db, "orders");
 
     const handleOrder = (data) => {
-        //==========================================================//
 
         console.log(data);
         if (data) {
@@ -182,6 +234,12 @@ const BuyingForm = () => {
 
         navigate("/polancoEcommerc/my-orders");
 
+       
+setTimeout(()=>{
+         UpdateById()
+},2000)
+       
+
         setCart([]);
 
         /*
@@ -223,22 +281,6 @@ const BuyingForm = () => {
                     <label htmlFor="name">Nombre de Comprador</label>
                     {errors.name && <small>{errors.name.message}</small>}
                 </div>
-
-                {/*      <div className="input-field">
-                        <i className="material-icons prefix">directions</i>
-                        <input 
-                            name="adress" 
-                            id="adress" 
-                            type="text" 
-                            className="validate" 
-                            autoComplete="none" 
-                            ref={register({
-                                required: "Ingresar direccion", minLength: {value:3, message:"Minimo 3 caracteres"}, maxLength: {value:60, message:"Maximo 60 caracteres"}
-                            })}
-                        />
-                        <label htmlFor="adress">Direccion</label>
-                        { errors.lastname && <small>{ errors.lastname.message }</small> }
-                    </div> */}
 
                 <div className="input-field">
                     <i className="material-icons prefix">directions</i>
@@ -370,3 +412,4 @@ const BuyingForm = () => {
 };
 
 export default BuyingForm;
+5
