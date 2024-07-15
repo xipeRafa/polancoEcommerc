@@ -2,7 +2,7 @@ import './Foother.css'
 
 import pedidos from '../../imgs/polanco/pedidos.jpg'
 import mujer from '../../imgs/polanco/mujer.png'
-import logo3 from '../../imgs/shipping.svg'
+import entregas from '../../imgs/polanco/entregas.png'
 import banner from '../../imgs/polanco/6.png'
 import nueve from '../../imgs/polanco/9.png'
 
@@ -30,19 +30,16 @@ const Foother = () => {
             <div className="s-box">
               <img className='mujer' src={pedidos} alt="banca" />
               <h3>Pedidos</h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit ea fugiat esse tempore ipsum temporibus.</p>
             </div>
             {/* Box 2 */}
             <div className="s-box">
               <img className='mujer' src={mujer} alt="bsn" /* style={{height: '100px', }} *//>
               <h3>Vestidos</h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit ea fugiat esse tempore ipsum temporibus.</p>
             </div>
             {/* Box 3 */}
             <div className="s-box">
-              <img src={logo3} alt="shiping" />
+              <img className='mujer' src={entregas} alt="entregas" />
               <h3>Entregas</h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit ea fugiat esse tempore ipsum temporibus.</p>
             </div>
           </div>
         </section>

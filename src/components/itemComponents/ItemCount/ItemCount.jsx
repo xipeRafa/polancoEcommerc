@@ -11,9 +11,7 @@ import './ItemCount.css'
 
 const ItemCount = ({ setIsAdded, initial, stock, item }) => {
 
-    console.log(item)
 
-    console.log(setIsAdded, initial, stock, item)
 
     const { addToCart, isInCart, updateItems } = useContext(CartContext);
 

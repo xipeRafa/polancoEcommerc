@@ -49,7 +49,8 @@ const MyOrders = () => {
                                 stateLastOrderInLS.map(el =>(
                                     <div className="order-row" key={el.buyer.email}>
                                         <div className="order-info date" >
-                                            {el.date.slice(0,16)}
+                                            {/*{el.date.slice(0,16)}*/}
+                                            {new Date(el.date).toLocaleDateString("es-ES", {year: 'numeric', month: 'long', day: 'numeric'})}
                                                               
                                         </div>
                                         <div className="order-info items">
