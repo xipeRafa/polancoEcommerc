@@ -78,11 +78,18 @@ export const CartProvider = (props) => {
       obj.quantity = obj.quantity + duplicate.quantity
 
       cart.splice(indexOfDuplicate, 1, obj);
+
     } else {
+
       setCart([...cart, obj]);
+
     }
-   // localStorage.setItem("cart", JSON.stringify(cart));
+
+
   }
+
+
+
 
   const isInCart = (itemName) => {
     const isIn = cart.find((product) => product.item === itemName);
@@ -90,10 +97,14 @@ export const CartProvider = (props) => {
     return isIn;
   };
 
+
+
   const updateItems = () => {
     let total = cart.reduce((acc, item) => acc + item.quantity, 0);
     setItems(total);
   };
+
+
 
   const getTotal = () => {
     const sumalize = cart.reduce(
@@ -103,11 +114,15 @@ export const CartProvider = (props) => {
     setTotal(sumalize);
   };
 
+
+
   const deleteItem = (itemName) => {
     const editedItems = cart.filter((product) => product.name !== itemName);
     setCart(editedItems);
     localStorage.setItem("cart", JSON.stringify(editedItems));
   };
+
+
 
   return (
     <CartContext.Provider
