@@ -112,68 +112,11 @@ const BuyingForm = () => {
     };
     toast.configure();
 
-    //Funcion para actualizr los stocks en firestore de los productos recien comprados
-      const updateStocks = () => {
-
-        cart.forEach( item => {
-
-            bache.update(itemCollection.doc(item.id),{stock: item.stock - item.quantity})
-
-            if(selectState !== ''){
-                bache.update(itemCollection.doc(item.id),{[selectState]: item[selectState] - item.quantity})
-            }
-
-        })
-
-        console.log(cart)
-
-        bache.commit().then(()=> {
-            console.log("Bache ok")
-        })
-        .catch(e => console.log(e))
-
-    } 
 
 
-    const UpdateById = async () => {
 
-        const arrItemsOrders = JSON.parse(localStorage.lastOrder)[0].items
-        const cityItem = JSON.parse(localStorage.lastOrder)[0].city
+   
 
-
-        arrItemsOrders.map((el,i)=>{
-
-            
-
-            if(cityItem ==='hermosillo'){
-
-                const elItem = el
-
-                elItem.stockHermosillo = el.stockHermosillo - el.quantity
-
-                const aDoc = doc(db, 'inventario', el.id);
-
-                updateDoc(aDoc, elItem)
-
-            }else{
-
-                const elSC = el
-
-                console.log('sanCarlos')
-
-                elSC.stockSanCarlos = el.stockSanCarlos - el.quantity
-
-                const aaDoc = doc(db, 'inventario', el.id);
-
-                updateDoc(aaDoc, elSC)
-
-            }
-
-                
-                        
-        })
-
-    };
 
 
 
@@ -210,44 +153,19 @@ const BuyingForm = () => {
             localStorage.setItem("cart", "[]");
         }
 
-        const itemCollection = collection(db, "orders");
-
-        getDocs(itemCollection)
-            .then((querySnapshot) => {
-                /*    if(isMounted){
-    
-                    if(querySnapshot.size === 0 ) {
-                        console.log('No results!')
-                    } */
-
-                const documents = querySnapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                }));
-                //console.log(documents)
-                /*   setItems( documents ) ; */
-                /*  } */
-            })
-            .catch((err) => {
-                console.log("Error searching items", err);
-            });
+     
 
         navigate("/polancoEcommerc/my-orders");
 
        
-setTimeout(()=>{
-         UpdateById()
-},2000)
-       
 
         setCart([]);
 
-        /*
+        
             setLoading(true);
             
-                 updateStocks(); 
-                purchaseNotif();
-         */
+           
+                 purchaseNotif();
     };
 
     return cart.length === 0 && loading === false ? (

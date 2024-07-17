@@ -20,6 +20,7 @@ const ItemList = ({ items }) => {
                     imgUrl={p.imgUrl}  
                     description={p.description}
                     talla={p.talla}
+                    sucursal={p.sucursal}
                 />)
             }
         </div>

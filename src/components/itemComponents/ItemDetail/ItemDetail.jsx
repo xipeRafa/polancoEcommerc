@@ -64,8 +64,8 @@ const ItemDetail = ({item}) => {
  
                     <h4 className="item-name">{item.name}</h4>
                     <h4>$ {item.price}</h4>
-                    <p>STOCK Hermosillo: {item.stockHermosillo}</p>
-                    <p>STOCK San Carlos: {item.stockSanCarlos}</p>
+                    <p>Sucursal: {item.sucursal}</p>
+                    <p>STOCK {item?.stockSanCarlos}{item?.stockHermosillo}</p>
                     <small>COD: { item.id}</small>
                     <h6>Description: {item.description}</h6>
                 </div>
