@@ -217,8 +217,8 @@
     .img-counter-container
     .small-images-big-image-container
     .big-image:hover {
-    transform: scale(2);
-    z-index: 2;
+    /*transform: scale(2);
+    z-index: 2;*/
   }
   .item-detail .container-two {
     display: flex;
@@ -343,8 +343,8 @@
     .img-counter-container
     .small-images-big-image-container
     .big-image:hover {
-    transform: scale(2);
-    z-index: 2;
+    /*transform: scale(2);
+    z-index: 2;*/
   }
   .item-detail .container-two {
     display: flex;
