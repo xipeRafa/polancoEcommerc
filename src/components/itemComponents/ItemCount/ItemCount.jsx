@@ -93,7 +93,6 @@ const ItemCount = ({ setIsAdded, initial, stock, item }) => {
                 <button
                     onClick={() => {
                         item.quantity = counter
-                        item.GlobalStock = stock
                         addToCart(item);
                         setCounter(initial);
                         setIsAdded(true);
