@@ -68,7 +68,7 @@ const ItemCount = ({ setIsAdded, initial, stock, item }) => {
         <>
             <div className="item-counter">
 
-                <div className="counter-container">
+                <div className="counter-container" disabled={item?.stockSanCarlos || item?.stockHermosillo < 1 ? true : false}>
 
                     <button onClick={removeItem}
                             className="waves-effect waves-light btn counter-btn" 
@@ -84,7 +84,7 @@ const ItemCount = ({ setIsAdded, initial, stock, item }) => {
                     </p>
                     <button onClick={addItem} 
                             className="waves-effect waves-light btn counter-btn"
-                            disabled={counter >= stock || stock === 0 || (isIn !== undefined && isIn?.quantity === isIn?.stock) || limitToBuy}>
+                            disabled={item?.stockSanCarlos || item?.stockHermosillo < 1 ? true : false}>
                         <p>+</p>
                     </button>
 
@@ -100,10 +100,10 @@ const ItemCount = ({ setIsAdded, initial, stock, item }) => {
                         toasti();
                     }}
                     className="waves-effect btn"
-                    disabled={stock === 0 || (isIn !== undefined && isIn?.quantity === isIn?.stock)} //Deshabilito la opcion de comprar mas si es que ya se llego al limite de stock 
+                    disabled={item?.stockSanCarlos || item?.stockHermosillo < 1 ? true : false} //Deshabilito la opcion de comprar mas si es que ya se llego al limite de stock 
                 >
                     {
-                        isIn !== undefined ? `Agregar ${counter} más` : 'Agregar al carrito'
+                        isIn !== undefined ? `Agregar ${counter} más` : item?.stockSanCarlos || item?.stockHermosillo < 1 ? 'Articulo Agotado' : 'Agregar al carrito'
                     }
 
                 </button>
