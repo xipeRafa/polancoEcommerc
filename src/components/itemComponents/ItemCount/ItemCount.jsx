@@ -29,7 +29,7 @@ const ItemCount = ({ setIsAdded, initial, stock, item }) => {
     const addItem = () => setCounter(counter + 1);
 
     const toasti = () => {
-        toast(`${counter} ${counter > 1 ? 'items agregados' : 'item agregado'} al carrito `, {
+        toast(`${counter} ${counter > 1 ? 'Productos Agregados' : 'Producto Agregado'} al Carrito `, {
             position: "top-left",
             autoClose: 4000,
             hideProgressBar: false,

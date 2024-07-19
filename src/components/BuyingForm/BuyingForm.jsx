@@ -81,12 +81,12 @@ const BuyingForm = () => {
 
     /* ===================================== selects ======================= */
 
-    const [selectCity, setSelectCity] = useState("");
+    //const [selectCity, setSelectCity] = useState("");
 
 
-    const handleSelectCity = (e) => {
-        setSelectCity(e.target.value);
-    };
+    //const handleSelectCity = (e) => {
+        //setSelectCity(e.target.value);
+    //};
 
     const motivationNotif = () => {
         toast("Estas a solo un paso!!  Completa los datos por favor", {
@@ -99,8 +99,10 @@ const BuyingForm = () => {
             progress: undefined,
         });
     };
+
+
     const purchaseNotif = () => {
-        toast("Compra Realizada con exito!! ", {
+        toast(`Compra Realizada con exito!! Ve a Sucursal ${cart[0].sucursal}`, {
             position: "bottom-left",
             autoClose: 7500,
             hideProgressBar: false,
@@ -135,7 +137,7 @@ const BuyingForm = () => {
                 items: cart,
                 date: String(new Date()),
                 total: total,
-                city: selectCity,
+                city: cart[0].sucursal?.toLowerCase(),
                 takenByCustomer: false,
             };
 
@@ -176,6 +178,10 @@ const BuyingForm = () => {
                 onSubmit={handleSubmit(handleOrder)}
                 className="form-container"
             >
+
+
+                <p className='text-white'>SUCURSAL {cart[0].sucursal.toUpperCase()}</p>
+
                 <div className="input-field">
                     <i className="material-icons prefix">account_circle</i>
                     <input
@@ -200,20 +206,23 @@ const BuyingForm = () => {
                     {errors.name && <small>{errors.name.message}</small>}
                 </div>
 
-                <div className="input-field">
+
+
+                {/*<div className="input-field ">
                     <i className="material-icons prefix">directions</i>
-                    <select
-                        className="browser-default city"
-                        onChange={handleSelectCity}
-                        value={selectCity}
+                    <select 
+                        className="browser-default city text-white"
+                        //onChange={handleSelectCity}
+
                     >
-                        <option value="" disabled>
-                            Elija la Ciudad de Sucursal
-                        </option>
-                        <option value="hermosillo">Hermosillo</option>
+
+                    <option value={cart[0].sucursal?.toLowerCase()} >{cart[0].sucursal?.toLowerCase()}</option>
+
+                     <option value="hermosillo">Hermosillo</option>
                         <option value="san carlos">San Carlos</option>
+
                     </select>
-                </div>
+                </div>*/}
 
                 <div className="input-field">
                     <i className="material-icons prefix">phone</i>

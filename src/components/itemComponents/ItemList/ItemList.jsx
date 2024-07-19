@@ -21,6 +21,7 @@ const ItemList = ({ items }) => {
                     description={p.description}
                     talla={p.talla}
                     sucursal={p.sucursal}
+                    tela={p.tela}
                 />)
             }
         </div>

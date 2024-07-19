@@ -7,7 +7,7 @@ import './Item.css';
 import { Link } from 'react-router-dom';
 
 
-const Item = ({ id, name, price, imgUrl, description, talla, sucursal }) => {
+const Item = ({ id, name, price, imgUrl, description, talla, sucursal, tela }) => {
 
     return (
         <Link to={`/polancoEcommerc/item/${id}`} >
@@ -20,7 +20,7 @@ const Item = ({ id, name, price, imgUrl, description, talla, sucursal }) => {
                     
                     <p className='title truncate'>{name}</p>
                     <p className='description'>Sucursal {sucursal}</p>
-                    <p className='description'>Descripcion {description?.slice(0, 19)}</p>
+                    <p className='description'>Tela {tela}</p>
                     <p className='price'>Talla {talla}</p>
                     <p className='price'>Precio ${price}</p>
                     
