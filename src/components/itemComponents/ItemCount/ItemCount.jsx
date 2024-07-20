@@ -103,7 +103,7 @@ const ItemCount = ({ setIsAdded, initial, stock, item }) => {
                     disabled={item?.stockSanCarlos < 1 || item?.stockHermosillo < 1 ? true : false} //Deshabilito la opcion de comprar mas si es que ya se llego al limite de stock 
                 >
                     {
-                        isIn !== undefined ? `Agregar ${counter} más` : item?.stockSanCarlos < 1|| item?.stockHermosillo < 1 ? 'Articulo Agotado' : 'Agregar al carrito'
+                        isIn !== undefined ? `Agregar ${counter} más` : item?.stockSanCarlos < 1 || item?.stockHermosillo < 1 ? 'Articulo Agotado' : 'Agregar al carrito'
                     }
 
                 </button>
