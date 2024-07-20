@@ -61,7 +61,7 @@ const ItemListContainer = () => {
 
                     (categoryId !== undefined) ?
                         <div className="item-list-container">  
-                            <ItemList items={ items.filter(product => product.category === `${categoryId}`) } />  
+                            <ItemList items={ items.sort((a, b) => b.duration - a.duration).filter(product => product.category === `${categoryId}`) } />  
                         </div>
                     :    
                         <div className="item-list-container ">    

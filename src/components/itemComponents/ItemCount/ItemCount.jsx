@@ -84,7 +84,7 @@ const ItemCount = ({ setIsAdded, initial, stock, item }) => {
                     </p>
                     <button onClick={addItem} 
                             className="waves-effect waves-light btn counter-btn"
-                            disabled={item?.stockSanCarlos < 1 || item?.stockHermosillo < 1 ? true : false}>
+                            disabled={item?.stockSanCarlos <= counter || item?.stockHermosillo <= counter ? true : false}>
                         <p>+</p>
                     </button>
 
