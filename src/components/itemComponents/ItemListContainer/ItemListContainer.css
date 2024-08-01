@@ -8,3 +8,42 @@
   padding: 5vh 0;
 }
 
+
+
+.btn-sucursal{
+  margin-top: 38px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.btn-sucursal>button{
+  margin: 0 5px;
+  padding: 4px 0;
+  width: 220px;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+@media (max-width:700px){
+  .btn-sucursal>button{
+       width: 120px;
+  }
+}
+
+button:focus{
+  background-color:white;
+  border: none;
+}
+
+
+.Active{
+   background-color:var(--live-orange-color)!important;
+   color: black;
+}
+
+.no-Active{
+   background-color:white;
+    color: gray;
+}

@@ -19,7 +19,9 @@ const ItemListContainer = () => {
     const {categoryId} = useParams();//Categoria definida en ruta para saber que productos filtrar
 
     const [items, setItems] = useState([]);
+
     localStorage.setItem('arrItems', JSON.stringify(items))
+
 
     useEffect(() => {
 
@@ -39,8 +41,6 @@ const ItemListContainer = () => {
                 const documents = querySnapshot.docs.map( doc => ( {id: doc.id, ...doc.data()} ) )
                 setItems( documents ) ;
                 console.log(documents)
-
-
                
             }
         })
@@ -54,19 +54,42 @@ const ItemListContainer = () => {
 
     },[]);
 
+        const [sucursalState, setSucursalState]=useState('Hermosillo')
+
+
+console.log(categoryId)
 
         return(
 
-            (items.length > 0) ?  
+            (items.length > 0) ? 
+
+
 
                     (categoryId !== undefined) ?
-                        <div className="item-list-container">  
-                            <ItemList items={ items.sort((a, b) => b.duration - a.duration).filter(product => product.category === `${categoryId}`) } />  
-                        </div>
+
+                        <>
+                            <div className="btn-sucursal">
+                                <button className={sucursalState === 'Hermosillo' ? 'Active' : 'no-Active'} onClick={()=>setSucursalState('Hermosillo')}>Hermosillo</button>
+                                <button className={sucursalState === 'San Carlos' ? 'Active' : 'no-Active'} onClick={()=>setSucursalState('San Carlos')}>San Carlos</button>
+                            </div>
+                            <div className="item-list-container">  
+                                <ItemList items={ items.sort((a, b) => b.duration - a.duration)
+                                    .filter(product => product.category === `${categoryId}`)
+                                    .filter(product => product.sucursal === sucursalState) } />  
+                            </div>
+                        </>
+
                     :    
-                        <div className="item-list-container ">    
-                            <ItemList items={items} />
-                        </div>
+                         <>
+                            <div className="btn-sucursal">
+                                <button className={sucursalState === 'Hermosillo' ? 'Active' : 'no-Active'} onClick={()=>setSucursalState('Hermosillo')}>Hermosillo</button>
+                                <button className={sucursalState === 'San Carlos' ? 'Active' : 'no-Active'} onClick={()=>setSucursalState('San Carlos')}>San Carlos</button>
+                            </div>
+                            <div className="item-list-container">    
+                                <ItemList items={items.filter(product => product.sucursal === sucursalState)} />
+                            </div>
+                        </>
+
 
             :(<Loader/>)
 
