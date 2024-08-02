@@ -142,14 +142,14 @@ const ItemListContainer = () => {
                                         pages.map((page, index) => (
                                             <button
                                                 key={index}
-                                                className={items.length -7 < paginationState ? 'd-none' : 'siguiente'}
+                                                className={b.length < 7  ? 'd-none' : 'siguiente'}
                                                 onClick={()=>{setPaginationState(page*8)}}>
                                                 {page}
                                             </button>
                                         ))
                                 }
 
-                                <button className={items.length -7 < paginationState ? 'd-none' : 'siguiente'}
+                                <button className={b.length < 7 < paginationState ? 'd-none' : 'siguiente'}
 
                                         onClick={()=>{
 
