@@ -18,7 +18,6 @@ const Cart = () => {
     const { cart, total, deleteItem}= useContext(CartContext);
     /* localStorage.setItem('CartLocal', cart) */
 
-    console.log(cart)
 
     if (cart.length !== 0) {
 

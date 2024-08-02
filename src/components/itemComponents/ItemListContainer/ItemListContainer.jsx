@@ -54,10 +54,50 @@ const ItemListContainer = () => {
 
     },[]);
 
+
+
+
+
+
         const [sucursalState, setSucursalState]=useState('Hermosillo')
 
+        const handleSucursalState=(sucursal)=>{
+            setPaginationState(0)
+            setSucursalState(sucursal)
+        }
 
-console.log(categoryId)
+
+
+        const [paginationState, setPaginationState]=useState(0)
+                                      
+        console.log('paginationState:', paginationState, paginationState+8)
+
+
+
+
+
+        let pages = []
+                                      
+
+        for (let i = 0; i <= Math.ceil(items.length/9); i++) {
+                pages.push(i);
+        }
+
+
+        let b = items.sort((a, b) => b.duration - a.duration)
+                                    .filter(product => product.sucursal === sucursalState)
+                                    .slice(paginationState, paginationState+8)
+
+
+        let pagesB = []
+                       
+                       console.log('b.length:', b.length)               
+
+        for (let i = 0; i <= b.length/4; i++) {
+                pagesB.push(i);
+        }
+       
+
 
         return(
 
@@ -68,26 +108,124 @@ console.log(categoryId)
                     (categoryId !== undefined) ?
 
                         <>
+
                             <div className="btn-sucursal">
-                                <button className={sucursalState === 'Hermosillo' ? 'Active' : 'no-Active'} onClick={()=>setSucursalState('Hermosillo')}>Hermosillo</button>
-                                <button className={sucursalState === 'San Carlos' ? 'Active' : 'no-Active'} onClick={()=>setSucursalState('San Carlos')}>San Carlos</button>
+                                <button className={sucursalState === 'Hermosillo' ? 'Active' : 'no-Active'} onClick={()=>handleSucursalState('Hermosillo')}>Hermosillo</button>
+                                <button className={sucursalState === 'San Carlos' ? 'Active' : 'no-Active'} onClick={()=>handleSucursalState('San Carlos')}>San Carlos</button>
                             </div>
+
                             <div className="item-list-container">  
-                                <ItemList items={ items.sort((a, b) => b.duration - a.duration)
+                                <ItemList items={items.sort((a, b) => b.duration - a.duration)
                                     .filter(product => product.category === `${categoryId}`)
-                                    .filter(product => product.sucursal === sucursalState) } />  
+                                    .filter(product => product.sucursal === sucursalState)
+                                    .slice(paginationState, paginationState+8)} />  
                             </div>
+
+
+
+                            <div className="btn-pagination">
+
+                                <button className={paginationState < 1 ? 'd-none': 'koko'}
+
+                                        onClick={()=>{
+
+                                            if(paginationState > 0){
+                                                setPaginationState(paginationState - 8)
+                                            }
+
+                                        }}> ← ANTERIOR
+
+                                </button>
+
+
+                                {
+                                        pages.map((page, index) => (
+                                            <button
+                                                key={index}
+                                                className={items.length -7 < paginationState ? 'd-none' : 'siguiente'}
+                                                onClick={()=>{setPaginationState(page*8)}}>
+                                                {page}
+                                            </button>
+                                        ))
+                                }
+
+                                <button className={items.length -7 < paginationState ? 'd-none' : 'siguiente'}
+
+                                        onClick={()=>{
+
+                                            if(items.length -7 > paginationState){
+                                                setPaginationState(paginationState + 8)
+                                            }
+
+                                        }}> SIGUIENTE → 
+
+                                </button>
+
+                            </div>
+
+
+
                         </>
 
                     :    
                          <>
+
                             <div className="btn-sucursal">
-                                <button className={sucursalState === 'Hermosillo' ? 'Active' : 'no-Active'} onClick={()=>setSucursalState('Hermosillo')}>Hermosillo</button>
-                                <button className={sucursalState === 'San Carlos' ? 'Active' : 'no-Active'} onClick={()=>setSucursalState('San Carlos')}>San Carlos</button>
+                                <button className={sucursalState === 'Hermosillo' ? 'Active' : 'no-Active'} onClick={()=>handleSucursalState('Hermosillo')}>Hermosillo</button>
+                                <button className={sucursalState === 'San Carlos' ? 'Active' : 'no-Active'} onClick={()=>handleSucursalState('San Carlos')}>San Carlos</button>
                             </div>
+
                             <div className="item-list-container">    
-                                <ItemList items={items.filter(product => product.sucursal === sucursalState)} />
+                                <ItemList items={b} />
                             </div>
+
+
+
+
+                            <div className="btn-pagination">
+
+                                <button className={paginationState < 1 ? 'd-none': 'siguiente' }
+
+                                        onClick={()=>{
+
+                                            if(paginationState > 0){ 
+                                                setPaginationState(paginationState - 8)
+                                            }
+
+                                        }}> ← ANTERIOR
+
+                                </button>
+
+
+                                {
+                                        pagesB.map((page, index) => (
+
+                                            <button
+                                                key={index}
+                                                className={b.length < 7  ? 'd-none' : 'siguiente'}
+                                                onClick={()=>{setPaginationState(page*8)}}>
+                                                {page}
+                                            </button>
+                                        ))
+                                }
+
+                                <button className={b.length < 7  ? 'd-none' : 'siguiente'}
+
+                                        onClick={()=>{
+
+                                            if(items.length -7 > paginationState){
+                                                setPaginationState(paginationState + 8)
+                                            }
+
+                                        }}> SIGUIENTE → 
+
+                                </button>
+
+                            </div>
+
+
+
+
                         </>
 
 
