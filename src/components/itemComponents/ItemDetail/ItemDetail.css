@@ -135,6 +135,17 @@
   color: #ffffff;
   text-align: start;
 }
+
+
+
+.item-detail .container-two .title-price b{
+    background-color: var(--live-orange-color);
+    padding: 3px;
+    border-radius: 3px;
+    margin: 0 4px;
+}
+
+
 @media screen and (min-width: 767px) {
   .item-detail {
     display: flex;

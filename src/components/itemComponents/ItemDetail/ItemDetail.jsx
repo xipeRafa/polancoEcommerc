@@ -11,7 +11,7 @@ import TechInfo from '../../TechnInfo/TechInfo';
 
 const ItemDetail = ({item}) => {
 
-
+console.log(item)
     const [ bigImg, setBigImg ] = useState('');
     const [ isAdded, setIsAdded ] = useState(false);
 
@@ -60,6 +60,8 @@ const ItemDetail = ({item}) => {
                 </div>
             </div>
             <div className="container-two">
+
+
                 <div className="title-price">
  
                     <h4 className="item-name">{item.name}</h4>
@@ -69,9 +71,22 @@ const ItemDetail = ({item}) => {
                         STOCK   {item?.stockSanCarlos < 1 ? <b className='bg-red'>Sin Stock </b> : item?.stockSanCarlos }
                                 {item?.stockHermosillo < 1 ? <b className='bg-red'>Sin Stock</b> : item?.stockHermosillo}
                     </p>
-                    <small>COD: { item.id}</small>
+                    {/*<small>COD: { item.id}</small>*/}
+
+
+                    <div> Tallas: {' '}
+                        {item.talla?.map((el,i)=>(
+                            <b key={i}>{el}</b>
+                        ))}
+                    </div>      
+
+                    <h6>Tela: {item.tela}</h6>
                     <h6>Description: {item.description}</h6>
+
                 </div>
+
+                 
+
                 {/* Solo renderizo el detalle tecnico si es que existe
                     Algunos productos no cuentan con detalle tecnico pero si con una descripción */}
                 {

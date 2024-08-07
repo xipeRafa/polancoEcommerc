@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 const Item = ({ id, name, price, imgUrl, description, talla, sucursal, tela }) => {
 
+
     return (
         <Link to={`/polancoEcommerc/item/${id}`} >
             <div className="card-container">
@@ -21,7 +22,12 @@ const Item = ({ id, name, price, imgUrl, description, talla, sucursal, tela }) =
                     <p className='title truncate'>{name}</p>
                     <p className='description'>Sucursal {sucursal}</p>
                     <p className='description'>Tela {tela}</p>
-                    <p className='price'>Talla {talla}</p>
+
+                   {/* {talla?.map((el,i)=>(
+                          <span key={i}>{el } </span>
+                    ))}*/}
+
+                    
                     <p className='price'>Precio ${price}</p>
                     
                 </div>
