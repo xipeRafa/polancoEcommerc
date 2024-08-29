@@ -409,3 +409,14 @@
     width: 43.4%;
   }
 }
+
+
+.tallasArr{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 260px;
+}
+
+.tallasB{
+  margin-top:6px!important;
+}

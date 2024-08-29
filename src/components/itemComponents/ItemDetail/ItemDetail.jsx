@@ -73,10 +73,10 @@ console.log(item)
                     </p>
                     {/*<small>COD: { item.id}</small>*/}
 
-
-                    <div> Tallas: {' '}
+                    Tallas:
+                    <div className='tallasArr'> 
                         {item.talla?.map((el,i)=>(
-                            <b key={i}>{el}</b>
+                            <b className='tallasB' key={i}>{el}</b>
                         ))}
                     </div>      
 
