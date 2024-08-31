@@ -20,9 +20,10 @@ console.log(item)
         <div className="item-detail">
             <div className="container-one">
                 <div className="img-counter-container">
+
                     <div className="small-images-big-image-container">
-                        <div className="small-images">
-                            <div className="sm-img" 
+                      {/*  <div className="small-images ">
+                            <div className="sm-img d-none" 
                                 style={{ 
                                     backgroundImage: `url(${item.imgUrl})` 
                                 }}
@@ -45,12 +46,13 @@ console.log(item)
                                 }}
                             >
                             </div>
-                        </div>
-                        <div className="big-image" 
-                            style={bigImg !== '' ? bigImg : { backgroundImage: `url(${item?.imgUrl})`} }
-                            >      
+                        </div>*/}
+                        <div className="big-image" style={bigImg !== '' ? bigImg : { backgroundImage: `url(${item?.imgUrl})`} }>      
                         </div>
                     </div>
+
+
+
                      <ItemCount isAdded={isAdded} setIsAdded={setIsAdded} initial={1} stock={Number(item.stockHermosillo) + Number(item.stockSanCarlos)} item={item} /> 
                     {
                         isAdded 
