@@ -40,7 +40,7 @@ const ItemListContainer = () => {
     
                 const documents = querySnapshot.docs.map( doc => ( {id: doc.id, ...doc.data()} ) )
                 setItems( documents ) ;
-                console.log(documents)
+                //console.log(documents)
                
             }
         })
@@ -61,6 +61,8 @@ const ItemListContainer = () => {
 
         const [sucursalState, setSucursalState]=useState('Hermosillo')
 
+          const [paginationState, setPaginationState]=useState(0)
+
         const handleSucursalState=(sucursal)=>{
             setPaginationState(0)
             setSucursalState(sucursal)
@@ -68,35 +70,28 @@ const ItemListContainer = () => {
 
 
 
-        const [paginationState, setPaginationState]=useState(0)
-                                      
-        console.log('paginationState:', paginationState, paginationState+8)
-
-
-
-
-
-        let pages = []
+      
                                       
 
-        for (let i = 0; i <= Math.ceil(items.length/9); i++) {
-                pages.push(i);
-        }
+
+
+
+
+        // let pages = []
+                                      
+
+        // for (let i = 0; i <= Math.ceil(items.length/9); i++) {
+        //         pages.push(i);
+        // }
+
+         let c = items.sort((a, b) => b.duration - a.duration)
+                                    .filter(product => product.sucursal === sucursalState)
 
 
         let b = items.sort((a, b) => b.duration - a.duration)
                                     .filter(product => product.sucursal === sucursalState)
                                     .slice(paginationState, paginationState+8)
 
-
-        let pagesB = []
-                       
-                       console.log('b.length:', b.length)               
-
-        for (let i = 0; i <= b.length/4; i++) {
-                pagesB.push(i);
-        }
-       
 
 
         return(
@@ -131,6 +126,7 @@ const ItemListContainer = () => {
 
                                             if(paginationState > 0){
                                                 setPaginationState(paginationState - 8)
+                                                window.scrollTo(0,250)
                                             }
 
                                         }}> ← ANTERIOR
@@ -138,23 +134,23 @@ const ItemListContainer = () => {
                                 </button>
 
 
-                                {
-                                        pages.map((page, index) => (
+                                
+                                        
                                             <button
-                                                key={index}
-                                                className={b.length < 7  ? 'd-none' : 'siguiente'}
-                                                onClick={()=>{setPaginationState(page*8)}}>
-                                                {page}
+                                                className={paginationState < 9 ? 'd-none' : 'siguiente'}
+                                                onClick={()=>{setPaginationState(0), window.scrollTo(0,250)}}>
+                                                {0}
                                             </button>
-                                        ))
-                                }
+                                        
+                                
 
-                                <button className={b.length < 7 < paginationState ? 'd-none' : 'siguiente'}
+                                <button className={c.length < paginationState + 8  ? 'd-none' : 'siguiente'}
 
                                         onClick={()=>{
 
                                             if(items.length -7 > paginationState){
                                                 setPaginationState(paginationState + 8)
+                                                window.scrollTo(0,250)
                                             }
 
                                         }}> SIGUIENTE → 
@@ -168,7 +164,7 @@ const ItemListContainer = () => {
                         </>
 
                     :    
-                         <>
+                         <>  
 
                             <div className="btn-sucursal">
                                 <button className={sucursalState === 'Hermosillo' ? 'Active' : 'no-Active'} onClick={()=>handleSucursalState('Hermosillo')}>Hermosillo</button>
@@ -190,6 +186,7 @@ const ItemListContainer = () => {
 
                                             if(paginationState > 0){ 
                                                 setPaginationState(paginationState - 8)
+                                                window.scrollTo(0,250)
                                             }
 
                                         }}> ← ANTERIOR
@@ -197,24 +194,22 @@ const ItemListContainer = () => {
                                 </button>
 
 
-                                {
-                                        pagesB.map((page, index) => (
+                               
 
                                             <button
-                                                key={index}
-                                                className={b.length < 7  ? 'd-none' : 'siguiente'}
-                                                onClick={()=>{setPaginationState(page*8)}}>
-                                                {page}
+                                                className={paginationState < 9 ? 'd-none' : 'siguiente'}
+                                                onClick={()=>{setPaginationState(0), window.scrollTo(0,250)}}>
+                                                {0}
                                             </button>
-                                        ))
-                                }
+                               
 
-                                <button className={b.length < 7  ? 'd-none' : 'siguiente'}
+                                <button className={c.length < paginationState + 8 ? 'd-none' : 'siguiente'}
 
                                         onClick={()=>{
 
                                             if(items.length -7 > paginationState){
                                                 setPaginationState(paginationState + 8)
+                                                window.scrollTo(0,250)
                                             }
 
                                         }}> SIGUIENTE → 
