@@ -61,7 +61,7 @@ const ItemListContainer = () => {
 
         const [sucursalState, setSucursalState]=useState('Hermosillo')
 
-          const [paginationState, setPaginationState]=useState(0)
+        const [paginationState, setPaginationState]=useState(0)
 
         const handleSucursalState=(sucursal)=>{
             setPaginationState(0)
@@ -76,21 +76,63 @@ const ItemListContainer = () => {
 
 
 
+        let cuantByPage = 20
+       
+        let pages = []
+                           
 
-        // let pages = []
-                                      
 
-        // for (let i = 0; i <= Math.ceil(items.length/9); i++) {
-        //         pages.push(i);
-        // }
 
-         let c = items.sort((a, b) => b.duration - a.duration)
-                                    .filter(product => product.sucursal === sucursalState)
+      
+
+        let arrSucursal = items.sort((a, b) => b.duration - a.duration).filter(product => product.sucursal === sucursalState)
+
+
+
+        for (let i = 0; i <= Math.ceil(arrSucursal.length/cuantByPage); i++) {
+                pages.push(i);
+        }
+
+        pages.shift()
+
+
+
+
+
+
+
+
+
+
+        let pagesCategory = []
+      
+
+        let arrCategory = items.sort((a, b) => b.duration - a.duration).filter(product => product.sucursal === sucursalState).filter(product => product.category === `${categoryId}`)
+
+
+
+        for (let i = 0; i <= Math.ceil(arrCategory.length/cuantByPage); i++) {
+                pagesCategory.push(i);
+        }
+        
+        pagesCategory.shift()
+
+
+
+
+
+
+
+
 
 
         let b = items.sort((a, b) => b.duration - a.duration)
                                     .filter(product => product.sucursal === sucursalState)
-                                    .slice(paginationState, paginationState+8)
+                                    .slice(paginationState, paginationState+cuantByPage)
+
+
+        localStorage.setItem('cuantByPage', JSON.stringify(pages))
+        localStorage.setItem('cuantByPageCategory', JSON.stringify(pagesCategory))
 
 
 
@@ -113,7 +155,7 @@ const ItemListContainer = () => {
                                 <ItemList items={items.sort((a, b) => b.duration - a.duration)
                                     .filter(product => product.category === `${categoryId}`)
                                     .filter(product => product.sucursal === sucursalState)
-                                    .slice(paginationState, paginationState+8)} />  
+                                    .slice(paginationState, paginationState+cuantByPage)} />  
                             </div>
 
 
@@ -124,10 +166,8 @@ const ItemListContainer = () => {
 
                                         onClick={()=>{
 
-                                            if(paginationState > 0){
-                                                setPaginationState(paginationState - 8)
+                                                setPaginationState(paginationState - cuantByPage)
                                                 window.scrollTo(0,250)
-                                            }
 
                                         }}> ← ANTERIOR
 
@@ -136,22 +176,28 @@ const ItemListContainer = () => {
 
                                 
                                         
-                                            <button
-                                                className={paginationState < 9 ? 'd-none' : 'siguiente'}
-                                                onClick={()=>{setPaginationState(0), window.scrollTo(0,250)}}>
-                                                {0}
-                                            </button>
+                                          
+                                        {JSON.parse(localStorage.cuantByPageCategory).map((el, i)=>{
+                                           
+                                              return <button key={i}
+                                                className={paginationState < cuantByPage ? 'd-none' : 'siguiente'}
+                                                onClick={()=>{setPaginationState(el * cuantByPage - cuantByPage)
+                                                              window.scrollTo(0,250)}}>
+                                                    {el}
+                                                </button>  
+                                            
+                                            
+                                           
+                                        })}
                                         
                                 
 
-                                <button className={c.length < paginationState + 8  ? 'd-none' : 'siguiente'}
+                                <button className={arrCategory.length === cuantByPage || arrCategory.length < paginationState + cuantByPage  ? 'd-none' : 'siguiente'}
 
                                         onClick={()=>{
 
-                                            if(items.length -7 > paginationState){
-                                                setPaginationState(paginationState + 8)
+                                                setPaginationState(paginationState + cuantByPage)
                                                 window.scrollTo(0,250)
-                                            }
 
                                         }}> SIGUIENTE → 
 
@@ -184,33 +230,38 @@ const ItemListContainer = () => {
 
                                         onClick={()=>{
 
-                                            if(paginationState > 0){ 
-                                                setPaginationState(paginationState - 8)
+                                                setPaginationState(paginationState - cuantByPage)
                                                 window.scrollTo(0,250)
-                                            }
 
                                         }}> ← ANTERIOR
 
                                 </button>
 
 
+
+                                        {JSON.parse(localStorage.cuantByPage).map((el, i)=>{
+                                           
+                                              return <button key={i}
+                                                className={paginationState < cuantByPage ? 'd-none' : 'siguiente'}
+                                                onClick={()=>{setPaginationState(el * cuantByPage - cuantByPage)
+                                                              window.scrollTo(0,250)}}>
+                                                    {el}
+                                                </button>  
+                                            
+                                            
+                                           
+                                        })}
                                
 
-                                            <button
-                                                className={paginationState < 9 ? 'd-none' : 'siguiente'}
-                                                onClick={()=>{setPaginationState(0), window.scrollTo(0,250)}}>
-                                                {0}
-                                            </button>
+                                           
                                
 
-                                <button className={c.length < paginationState + 8 ? 'd-none' : 'siguiente'}
+                                <button className={arrSucursal.length === cuantByPage || arrSucursal.length < paginationState + cuantByPage ? 'd-none' : 'siguiente'}
 
                                         onClick={()=>{
 
-                                            if(items.length -7 > paginationState){
-                                                setPaginationState(paginationState + 8)
+                                                setPaginationState(paginationState + cuantByPage)
                                                 window.scrollTo(0,250)
-                                            }
 
                                         }}> SIGUIENTE → 
 
