@@ -11,9 +11,22 @@ const Item = ({ id, name, price, imgUrl, description, talla, sucursal, tela }) =
 
 
     return (
-        <Link to={`/polancoEcommerc/item/${id}`} >
+        <Link to={`/polancoEcommerc/item/${id}`} onClick={()=>{
+
+                                                    setTimeout(()=>{
+                                                         window.scrollTo(0,250)
+                                                     },300)
+                                                       
+
+
+                                                    }} >
+
+
+
+
+
             <div className="card-container">
-                <div className="img-container">
+                <div className="img-container" >
                     <img src={imgUrl} alt=""/>
                 </div>
 
@@ -37,3 +50,6 @@ const Item = ({ id, name, price, imgUrl, description, talla, sucursal, tela }) =
 }
 
 export default Item
+
+
+//

@@ -28,7 +28,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 95%;
-  height: 500px;
+  height: 600px;
   background-color: black;
   border: 2px solid black;
 }
@@ -293,7 +293,7 @@
     margin-left: 0;
     max-width: 490px;
     background-color: black;
-    height: 570px;
+    height: 630px;
   }
   .item-detail
     .container-one
