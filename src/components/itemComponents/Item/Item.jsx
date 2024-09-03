@@ -14,16 +14,10 @@ const Item = ({ id, name, price, imgUrl, description, talla, sucursal, tela }) =
         <Link to={`/polancoEcommerc/item/${id}`} onClick={()=>{
 
                                                     setTimeout(()=>{
-                                                         window.scrollTo(0,250)
-                                                     },300)
-                                                       
+                                                        window.scrollTo(0,250)
+                                                    },100)     
 
-
-                                                    }} >
-
-
-
-
+                                                }} >
 
             <div className="card-container">
                 <div className="img-container" >
@@ -45,6 +39,7 @@ const Item = ({ id, name, price, imgUrl, description, talla, sucursal, tela }) =
                     
                 </div>
             </div>
+            
         </Link>
     )
 }
