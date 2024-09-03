@@ -8,8 +8,7 @@ const Heading = () => {
                         <p>Diseño y Moda</p>
                         <h2>El Outfit Perfecto esta en</h2>
                         <div className='imgContainer'>
-                        <img className='polanco' src={logo} alt="polanco" />
-
+                              <img className='polanco' src={logo} alt="polanco" />
                         </div>
                   </div>
           

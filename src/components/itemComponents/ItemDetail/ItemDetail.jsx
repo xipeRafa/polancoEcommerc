@@ -83,7 +83,7 @@ console.log(item)
                     </div>      
 
                     <h6>Tela: {item.tela}</h6>
-                    <h6>Description: {item.description}</h6>
+                    <h6>Descripción: {item.description}</h6>
 
                 </div>
 
