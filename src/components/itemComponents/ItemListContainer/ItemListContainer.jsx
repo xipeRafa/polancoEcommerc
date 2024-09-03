@@ -180,7 +180,7 @@ const ItemListContainer = () => {
                                         {JSON.parse(localStorage.cuantByPageCategory).map((el, i)=>{
                                            
                                               return <button key={i}
-                                                className={paginationState < cuantByPage ? 'd-none' : 'siguiente'}
+                                                className={paginationState < cuantByPage + cuantByPage ? 'd-none' : 'siguiente'}
                                                 onClick={()=>{setPaginationState(el * cuantByPage - cuantByPage)
                                                               window.scrollTo(0,250)}}>
                                                     {el}
@@ -242,7 +242,7 @@ const ItemListContainer = () => {
                                         {JSON.parse(localStorage.cuantByPage).map((el, i)=>{
                                            
                                               return <button key={i}
-                                                className={paginationState < cuantByPage ? 'd-none' : 'siguiente'}
+                                                className={paginationState < cuantByPage + cuantByPage ? 'd-none' : 'siguiente'}
                                                 onClick={()=>{setPaginationState(el * cuantByPage - cuantByPage)
                                                               window.scrollTo(0,250)}}>
                                                     {el}
