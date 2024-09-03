@@ -69,10 +69,10 @@ console.log(item)
                     <h4 className="item-name">{item.name}</h4>
                     <h4>$ {item.price}</h4>
                     <p>Sucursal: {item.sucursal}</p>
-                 {/*   <p>
+                    <p>
                         STOCK   {item?.stockSanCarlos < 1 ? <b className='bg-red'>Sin Stock </b> : item?.stockSanCarlos }
                                 {item?.stockHermosillo < 1 ? <b className='bg-red'>Sin Stock</b> : item?.stockHermosillo}
-                    </p>*/}
+                    </p>
                     {/*<small>COD: { item.id}</small>*/}
 
                     Tallas:
