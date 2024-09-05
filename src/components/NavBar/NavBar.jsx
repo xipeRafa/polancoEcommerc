@@ -58,9 +58,9 @@ const NavBar = () => {
                 <li>
                     <NavLink to="/polancoEcommerc/my-orders" className="navlink" > PEDIDOS </NavLink>
                 </li>
-                <li>
+              {/*  <li>
                     <NavLink to="/polancoEcommerc/accesorios" className="navlink" > ACCESORIOS </NavLink>
-                </li>
+                </li>*/}
             </ul>
         </>
     )

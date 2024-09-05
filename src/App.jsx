@@ -15,7 +15,7 @@ import Cart from './components/Cart/Cart';
 import BuyingForm from './components/BuyingForm/BuyingForm.jsx';
 import MyOrders from './components/MyOrders/MyOrders.jsx';
 import Heading from './components/Heading/Heading.jsx';
-import Accesorios from './components/Accesorios/Accesorios.jsx';
+//import Accesorios from './components/Accesorios/Accesorios.jsx';
 
 //Librerias
 import { toast } from 'react-toastify';
@@ -91,7 +91,7 @@ const App = () => {
                     <Route path="/polancoEcommerc/order" element={<BuyingForm/>}/>
                     <Route path="/polancoEcommerc/my-orders" element={<MyOrders/>}/>
 
-                    <Route path="/polancoEcommerc/accesorios" element={<Accesorios />}/>
+                    {/*<Route path="/polancoEcommerc/accesorios" element={<Accesorios />}/>*/}
 
                     <Route path="*"  element={<Navigate to="/polancoEcommerc" />}/> 
                 </Routes>
