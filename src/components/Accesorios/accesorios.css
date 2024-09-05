@@ -1,0 +1,35 @@
+.accesorios{
+	display: flex;
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+
+
+.accesorioItem{
+		margin-left: 5%;
+		width: 20%;
+		text-align: center;
+		background-color: rgba(30, 28, 42, 0.93);
+		color: white;
+		border-radius: 6px;
+		box-shadow: 4px 4px 12px 0px var(--live-orange-color);
+		padding: 20px 0;
+}
+
+.accesorioItem>img{
+	width: 80%;
+}
+
+
+@media(max-width:900px){
+	.accesorios{
+		flex-direction: column;
+	}
+	.accesorioItem{
+		width: 80%;
+		margin-right: 10%;
+		margin-left: 10%;
+		margin-bottom: 50px;
+	}
+}

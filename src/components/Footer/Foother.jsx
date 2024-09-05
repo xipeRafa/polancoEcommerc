@@ -65,14 +65,16 @@ const Foother = () => {
             <li><a>Servicios</a></li>
           </div> 
           <div className="contact-box">
-            <h3>Links</h3>
-            <li><a>Contacto</a></li>
-            <li><a>Privacy Policy</a></li>
-            <li><a>Disclaimer</a></li>
-            <li><a>Terms Of Use</a></li>
+
+            <h3>San Carlos</h3>
+            <li><a>BLVD. GABRIEL ESTRADA NO. 129</a></li>
+            <li><a>COL. CLUB RESIDENCIAL EL CARACOL</a></li>
+            <li><a>CP 85506</a></li>
+            <li><a>EST. 2022</a></li>
+             <span>+52 662 348 0101</span>
           </div>
           <div className="contact-box address">
-            <h3>Contacto</h3>
+            <h3>Hermosillo</h3>
             <span>Gustavo Hodgers #18</span>
             <span>Colonia Modelo 83150</span>
             <span>Hermosillo, Sonora</span> 
