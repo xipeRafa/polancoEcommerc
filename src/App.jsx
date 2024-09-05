@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 // Libreria de Materialize
 import M from 'materialize-css';
@@ -25,25 +25,30 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import {CartProvider} from './context/cartContext';
 
 //Router 
-import {useLocation, Routes,Route, Navigate} from 'react-router-dom'
+import {useLocation, Routes, Route, Navigate} from 'react-router-dom'
 
 //Css particular
 import './assets/styles/app.css'
 import './assets/styles/colors.css'
 import Foother from './components/Footer/Foother';
 
-function ScrollToTop() {
+
+  
+
+  
+
+
+const App = () => {
+
+
     const { pathname } = useLocation();
   
     useEffect(() => {
         window.scrollTo({ top: 0 });
     }, [pathname]);
-  
-    return null;
-  }
 
 
-const App = () => {
+
 
     //State para controlar el toastify de bienvenida, una vez que entra el usuario no se mostrara si recarga la pagina
     const [ justEntered, setJustEntered ] = useState(localStorage.getItem('justEntered'));
@@ -78,12 +83,14 @@ const App = () => {
 
     return(
         <>
-            <ScrollToTop />
             <Heading /> 
+
             <CartProvider>
+
                 <NavBar/>
+
                 <Routes>
-                    <Route path="/polancoEcommerc" element={<ItemListContainer/>}/>
+                    <Route path="/polancoEcommerc" element={<ItemListContainer />}/>
                     <Route path="/polancoEcommerc/categories/:categoryId" element={<ItemListContainer/>}/>
                     <Route path="/polancoEcommerc/item/:id" element={<ItemDetailContainer/>}/>
 
@@ -95,9 +102,11 @@ const App = () => {
 
                     <Route path="*"  element={<Navigate to="/polancoEcommerc" />}/> 
                 </Routes>
+                
             </CartProvider>
+
             <Foother />
-            </>
+        </>
     ) 
 
 }

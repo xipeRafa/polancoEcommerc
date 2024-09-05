@@ -12,8 +12,15 @@ import db from '../../../firebase/firebaseConfig';
 //Particular CSS
 import './ItemListContainer.css'
 
+ import {useLocation} from 'react-router-dom'
+
+
+
 
 const ItemListContainer = () => {
+
+
+    const { pathname } = useLocation();
 
 
     const {categoryId} = useParams();//Categoria definida en ruta para saber que productos filtrar
@@ -69,11 +76,17 @@ const ItemListContainer = () => {
         }
 
 
+        useEffect(() => {
+            window.scrollTo(0,250);
+        }, [paginationState]);
+
+
+        useEffect(() => {
+            setPaginationState(0)
+        }, [pathname]);
 
       
                                       
-
-
 
 
         let cuantByPage = 20
@@ -167,7 +180,6 @@ const ItemListContainer = () => {
                                         onClick={()=>{
 
                                                 setPaginationState(paginationState - cuantByPage)
-                                                window.scrollTo(0,250)
 
                                         }}> ← ANTERIOR
 
@@ -181,8 +193,7 @@ const ItemListContainer = () => {
                                            
                                               return <button key={i}
                                                 className={paginationState < cuantByPage + cuantByPage ? 'd-none' : 'siguiente'}
-                                                onClick={()=>{setPaginationState(el * cuantByPage - cuantByPage)
-                                                              window.scrollTo(0,250)}}>
+                                                onClick={()=>{setPaginationState(el * cuantByPage - cuantByPage)}}>
                                                     {el}
                                                 </button>  
                                             
@@ -197,7 +208,6 @@ const ItemListContainer = () => {
                                         onClick={()=>{
 
                                                 setPaginationState(paginationState + cuantByPage)
-                                                window.scrollTo(0,250)
 
                                         }}> SIGUIENTE → 
 
@@ -231,7 +241,6 @@ const ItemListContainer = () => {
                                         onClick={()=>{
 
                                                 setPaginationState(paginationState - cuantByPage)
-                                                window.scrollTo(0,250)
 
                                         }}> ← ANTERIOR
 
@@ -243,8 +252,7 @@ const ItemListContainer = () => {
                                            
                                               return <button key={i}
                                                 className={paginationState < cuantByPage + cuantByPage ? 'd-none' : 'siguiente'}
-                                                onClick={()=>{setPaginationState(el * cuantByPage - cuantByPage)
-                                                              window.scrollTo(0,250)}}>
+                                                onClick={()=>{setPaginationState(el * cuantByPage - cuantByPage)}}>
                                                     {el}
                                                 </button>  
                                             
@@ -261,7 +269,6 @@ const ItemListContainer = () => {
                                         onClick={()=>{
 
                                                 setPaginationState(paginationState + cuantByPage)
-                                                window.scrollTo(0,250)
 
                                         }}> SIGUIENTE → 
 
