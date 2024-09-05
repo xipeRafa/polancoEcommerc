@@ -75,14 +75,14 @@ console.log(item)
                     </p>
                     <small>COD: { item.id}</small>*/}
 
-                    Tallas:
-                    <div className='tallasArr'> 
+                    <span className={item.name === 'Accesorio' ? 'd-nonde' : 'tallasArr' }>Tallas:</span>
+                    <div className={item.name === 'Accesorio' ? 'd-nonde' : 'tallasArr' }>
                         {item.talla?.map((el,i)=>(
                             <b className='tallasB' key={i}>{el}</b>
                         ))}
                     </div>      
 
-                    <h6>Tela: {item.tela}</h6>
+                    {item.name === 'Accesorio' ? <h6>{item.description}</h6> : <h6>Tela {item.tela}</h6>}
                     <h6>Descripción: {item.description}</h6>
 
                 </div>

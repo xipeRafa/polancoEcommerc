@@ -28,7 +28,9 @@ const Item = ({ id, name, price, imgUrl, description, talla, sucursal, tela }) =
                     
                     <p className='title truncate'>{name}</p>
                     <p className='description'>Sucursal {sucursal}</p>
-                    <p className='description'>Tela {tela}</p>
+
+                    {name==='Accesorio' ? <p className='description'>{description}</p> : <p className='description'>Tela {tela}</p>}
+                    
 
                    {/* {talla?.map((el,i)=>(
                           <span key={i}>{el } </span>
