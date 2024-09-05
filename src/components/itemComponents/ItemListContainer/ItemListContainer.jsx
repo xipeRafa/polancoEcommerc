@@ -95,10 +95,12 @@ const ItemListContainer = () => {
                            
 
 
-
+        const [hmState, setHmState]=useState(true)
       
 
-        let arrSucursal = items.sort((a, b) => b.duration - a.duration).filter(product => product.sucursal === sucursalState)
+        let arrSucursal = items.sort((a, b) => b.duration - a.duration)
+                    .filter(product => product.sucursal === sucursalState)
+                    .filter(el => el.para === (hmState ? 'hombre' : 'mujer'))
 
 
 
@@ -120,7 +122,10 @@ const ItemListContainer = () => {
         let pagesCategory = []
       
 
-        let arrCategory = items.sort((a, b) => b.duration - a.duration).filter(product => product.sucursal === sucursalState).filter(product => product.category === `${categoryId}`)
+        let arrCategory = items.sort((a, b) => b.duration - a.duration)
+                            .filter(product => product.sucursal === sucursalState)
+                            .filter(product => product.category === `${categoryId}`)
+                            .filter(el => el.para === (hmState ? 'hombre' : 'mujer'))
 
 
 
@@ -135,19 +140,17 @@ const ItemListContainer = () => {
 
 
 
-
-
-
-
         let b = items.sort((a, b) => b.duration - a.duration)
                                     .filter(product => product.sucursal === sucursalState)
+                                    .filter(el => el.para === (hmState ? 'hombre' : 'mujer'))
                                     .slice(paginationState, paginationState+cuantByPage)
+                                    
 
 
         localStorage.setItem('cuantByPage', JSON.stringify(pages))
         localStorage.setItem('cuantByPageCategory', JSON.stringify(pagesCategory))
 
-
+console.log(b)
 
         return(
 
@@ -162,12 +165,14 @@ const ItemListContainer = () => {
                             <div className="btn-sucursal">
                                 <button className={sucursalState === 'Hermosillo' ? 'Active' : 'no-Active'} onClick={()=>handleSucursalState('Hermosillo')}>Hermosillo</button>
                                 <button className={sucursalState === 'San Carlos' ? 'Active' : 'no-Active'} onClick={()=>handleSucursalState('San Carlos')}>San Carlos</button>
+                                <button onClick={()=>setHmState(!hmState)}>{(hmState ? 'hombre' : 'mujer').toUpperCase()}</button>
                             </div>
 
                             <div className="item-list-container">  
                                 <ItemList items={items.sort((a, b) => b.duration - a.duration)
                                     .filter(product => product.category === `${categoryId}`)
                                     .filter(product => product.sucursal === sucursalState)
+                                    .filter(el => el.para === (hmState ? 'hombre' : 'mujer'))
                                     .slice(paginationState, paginationState+cuantByPage)} />  
                             </div>
 
@@ -225,7 +230,10 @@ const ItemListContainer = () => {
                             <div className="btn-sucursal">
                                 <button className={sucursalState === 'Hermosillo' ? 'Active' : 'no-Active'} onClick={()=>handleSucursalState('Hermosillo')}>Hermosillo</button>
                                 <button className={sucursalState === 'San Carlos' ? 'Active' : 'no-Active'} onClick={()=>handleSucursalState('San Carlos')}>San Carlos</button>
+                                <button onClick={()=>setHmState(!hmState)}>{(hmState ? 'hombre' : 'mujer').toUpperCase()}</button>
                             </div>
+
+
 
                             <div className="item-list-container">    
                                 <ItemList items={b} />
